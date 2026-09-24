@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#e7e5df" />
+    <meta
+      name="description"
+      content="Выдох 2.0 — камерный ретрит 30 октября — 1 ноября в Подмосковье. Кундалини-йога, психология и работа с состоянием."
+    />
+    <title>Выдох 2.0 — камерный ретрит</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232d302d'/%3E%3Cpath d='M17 28c9-1 17 3 22 10M24 18c4 6 11 8 22 7M20 45c8-4 17-4 27 1' fill='none' stroke='%23d2b27f' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --page: #e7e5df;
+        --ink: #252725;
+        --accent: #9d8059;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        background: var(--page);
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 6%, rgba(255, 255, 255, 0.75), transparent 26rem),
+          var(--page);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .skip-link {
+        position: fixed;
+        z-index: 20;
+        top: 0.75rem;
+        left: 0.75rem;
+        translate: 0 -200%;
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
+        color: white;
+        background: var(--ink);
+        transition: translate 160ms ease;
+      }
+
+      .skip-link:focus {
+        translate: 0;
+      }
+
+      main {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .slide {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        isolation: isolate;
+        background: #f0efeb;
+      }
+
+      .slide + .slide {
+        border-top: 1px solid rgba(37, 39, 37, 0.08);
+      }
+
+      .slide::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: rgba(221, 227, 222, 0.055);
+        mix-blend-mode: color;
+      }
+
+      .slide img {
+        display: block;
+        width: 100%;
+        height: auto;
+        filter: saturate(0.86) sepia(0.025) contrast(0.98) brightness(1.015);
+      }
+
+      .slide:first-of-type img,
+      .slide:nth-of-type(2) img,
+      .slide:last-of-type img {
+        filter: saturate(0.78) sepia(0.015) contrast(0.98) brightness(1.025);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (min-width: 1600px) {
+        main {
+          max-width: 1800px;
+          margin-inline: auto;
+          box-shadow: 0 0 80px rgba(35, 40, 35, 0.12);
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .slide {
+          opacity: 0;
+          translate: 0 12px;
+          transition: opacity 500ms ease, translate 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+
+        .slide.is-visible {
+          opacity: 1;
+          translate: 0;
+        }
+      }
+
+      @media (max-width: 700px) {
+        body {
+          background: #f0efeb;
+        }
+
+        .slide + .slide {
+          margin-top: 0.45rem;
+          border-top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#retreat">К содержанию</a>
+    <main id="retreat" aria-label="Презентация ретрита Выдох 2.0">
+      <figure class="slide">
+        <img src="assets/slide-1.jpg" alt="Выдох 2.0. Камерный ретрит 30 октября — 1 ноября в Московской области." />
+        <figcaption class="sr-only">Кундалини-йога, психология и работа с состоянием.</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="assets/slide-2.jpg" alt="Что такое Выдох: не отпуск, не бизнес-форум и не нетворкинг ради контактов." loading="lazy" />
+        <figcaption class="sr-only">Контроль, ответственность, результат — и снова контроль. Наконец можно позволить себе выдохнуть.</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="assets/slide-3.jpg" alt="Проводники ретрита: Елена и Анна — два взгляда на состояние." loading="lazy" />
+        <figcaption class="sr-only">Елена — мастер кундалини-йоги и экзистенциальный психотерапевт. Анна — практикующий психотерапевт и гештальт-терапевт.</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="assets/slide-4.jpg" alt="Место, где становится тихо: лес, вода и воздух в Подмосковье." loading="lazy" />
+        <figcaption class="sr-only">Тихая эколокация с уединением.</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="assets/slide-5.jpg" alt="Три дня: тело, психика и состояние." loading="lazy" />
+        <figcaption class="sr-only">Кундалини-йога, телесные и психотерапевтические практики, рефлексия, работа с внутренними состояниями, тишина и восстановление.</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="assets/slide-6.jpg" alt="Три тарифа ретрита: 63 999, 65 999 и 70 999 рублей." loading="lazy" />
+        <figcaption class="sr-only">В стоимость входят проживание, питание, программа, материалы и сопровождение ведущих.</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="assets/slide-7.jpg" alt="Тебе не нужен ещё один рывок. Тебе просто пора выдохнуть." loading="lazy" />
+        <figcaption class="sr-only">Ретрит для предпринимателей и создателей. 30 октября — 1 ноября, Московская область.</figcaption>
+      </figure>
+    </main>
+    <script>
+      const slides = document.querySelectorAll('.slide');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('is-visible');
+          });
+        }, { rootMargin: '8% 0px', threshold: 0.08 });
+        slides.forEach((slide) => observer.observe(slide));
+      } else {
+        slides.forEach((slide) => slide.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>
