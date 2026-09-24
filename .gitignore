@@ -1,6 +1,16 @@
 node_modules/
 dist/
+.pages-dist/
 .wrangler/
 .env*
 .dev.vars*
 *.tar.gz
+*.log
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+.DS_Store
+.cache/
+.npmrc
+coverage/

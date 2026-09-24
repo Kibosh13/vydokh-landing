@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "build:pages": "node scripts/build-pages.mjs",
     "validate": "node scripts/validate-artifact.mjs && node scripts/test-worker.mjs",
     "db:generate": "drizzle-kit generate"
   },
