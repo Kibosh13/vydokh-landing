@@ -128,7 +128,7 @@
       .cta-button { margin-top:1rem; padding:.85rem 1.25rem; color:#fff; background:#8d7048; border:0; border-radius:999px; cursor:pointer; transition:transform .2s ease,background .2s ease; }
       .cta-button:hover { transform:translateY(-2px); background:#765d3c; }
       .cta-status { min-height:1.3em; margin:.6rem 0 0; color:#6d5a3f; font-size:.78rem; }
-      .closing__photo { min-height:100%; background:url("assets/closing-clean.png") center/cover no-repeat; filter:saturate(.86) contrast(.97); clip-path:polygon(5.5% 0,6.2% 6%,4.9% 13%,6.5% 20%,5.2% 28%,6.1% 36%,4.7% 44%,5.8% 52%,4.8% 60%,6.4% 69%,5.1% 78%,6% 86%,4.6% 94%,5.4% 100%,100% 100%,100% 0); }
+      .closing__photo { min-height:100%; background:url("assets/closing-clean.png") center/cover no-repeat; filter:saturate(.86) contrast(.97); -webkit-mask:url("assets/closing-tear-desktop.svg") center/100% 100% no-repeat; mask:url("assets/closing-tear-desktop.svg") center/100% 100% no-repeat; }
 
       [data-reveal] { opacity:0; transform:translateY(20px); transition:opacity .65s ease,transform .65s ease; }
       [data-reveal].is-visible { opacity:1; transform:none; }
@@ -148,7 +148,7 @@
         .price-card__body { padding:1.5rem 1rem; }
         .closing { grid-template-columns:1fr; }
         .closing__copy { order:1; }
-        .closing__photo { min-height:520px; order:2; background-size:cover; background-position:center; clip-path:polygon(0 3.2%,7% 2.5%,15% 3.8%,24% 2.7%,34% 4.1%,45% 2.4%,56% 3.6%,68% 2.3%,79% 3.9%,90% 2.6%,100% 3.4%,100% 100%,0 100%); }
+        .closing__photo { min-height:520px; order:2; background-size:cover; background-position:center; -webkit-mask-image:url("assets/closing-tear-mobile.svg"); mask-image:url("assets/closing-tear-mobile.svg"); }
       }
       @media (max-width:700px) {
         .section { min-height:auto; }
