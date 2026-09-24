@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#081c1b" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Заявки · Выдох 2.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Prata&display=swap" rel="stylesheet" />
+    <style>
+      :root { --paper:#f2efe8; --paper-2:#e8e2d7; --ink:#171b19; --muted:#666b65; --forest:#081c1b; --gold:#a98652; --line:rgba(108,85,50,.26); --serif:"Prata",Georgia,serif; --sans:"Manrope",Arial,sans-serif; }
+      * { box-sizing:border-box; }
+      html { min-width:320px; background:var(--forest); }
+      body { min-height:100svh; margin:0; color:var(--ink); background:linear-gradient(145deg,var(--paper) 0%,#ece7de 58%,var(--paper-2) 100%); font-family:var(--sans); }
+      button,input,a { font:inherit; }
+      button { cursor:pointer; }
+      .shell { width:min(1180px,calc(100% - 3rem)); margin-inline:auto; padding:clamp(2rem,5vw,4.5rem) 0; }
+      .topbar { display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; margin-bottom:2.2rem; }
+      .kicker { margin:0 0 .65rem; color:var(--gold); font-size:.72rem; font-weight:600; letter-spacing:.17em; text-transform:uppercase; }
+      h1 { margin:0; font-family:var(--serif); font-size:clamp(2.6rem,6vw,5.5rem); font-weight:400; line-height:1; letter-spacing:-.035em; }
+      .back { color:#5f4d35; text-underline-offset:.22em; }
+      .panel { padding:clamp(1.35rem,3.3vw,2.5rem); border:1px solid #b29a77; border-radius:.85rem; background:rgba(248,246,241,.72); box-shadow:0 22px 55px rgba(38,31,21,.08); backdrop-filter:blur(8px); }
+      .login { max-width:520px; }
+      .login h2 { margin:0 0 .65rem; font-family:var(--serif); font-size:1.65rem; font-weight:400; }
+      .login p { margin:0 0 1.25rem; color:var(--muted); line-height:1.55; }
+      .login-form { display:flex; gap:.65rem; }
+      input { min-width:0; min-height:3.2rem; padding:.8rem .95rem; color:var(--ink); background:#fbf8f1; border:1px solid #b8a98f; border-radius:.55rem; outline:none; }
+      input:focus { border-color:#765d3c; box-shadow:0 0 0 3px rgba(141,112,72,.13); }
+      .login-form input { flex:1; }
+      .button { min-height:3.1rem; padding:.72rem 1.1rem; color:#fff; background:#8d7048; border:1px solid #8d7048; border-radius:999px; white-space:nowrap; }
+      .button:hover { background:#745b3b; }
+      .button--quiet { color:#6d5738; background:transparent; }
+      .button--quiet:hover { color:#fff; }
+      .button--small { min-height:2.3rem; padding:.42rem .8rem; font-size:.75rem; }
+      .status { min-height:1.4em; margin:.8rem 0 0; color:#8b453d; font-size:.82rem; }
+      .crm[hidden],.login[hidden] { display:none; }
+      .crm-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.1rem; }
+      .crm-summary { display:flex; align-items:baseline; flex-wrap:wrap; gap:.45rem 1rem; }
+      .crm-summary strong { font-family:var(--serif); font-size:2rem; font-weight:400; }
+      .crm-summary span { color:var(--muted); font-size:.84rem; }
+      .crm-actions { display:flex; gap:.55rem; }
+      .table-wrap { overflow:hidden; border:1px solid var(--line); border-radius:.65rem; }
+      table { width:100%; border-collapse:collapse; }
+      th { padding:.85rem 1rem; color:#6f644f; background:rgba(169,134,82,.1); font-size:.67rem; font-weight:600; letter-spacing:.1em; text-align:left; text-transform:uppercase; }
+      td { padding:1rem; border-top:1px solid var(--line); vertical-align:middle; }
+      td:first-child { width:4rem; color:#8a8173; }
+      .name { font-weight:600; }
+      .telegram { color:#7a5e38; text-underline-offset:.2em; overflow-wrap:anywhere; }
+      .date { color:var(--muted); font-size:.82rem; white-space:nowrap; }
+      .lead-action { display:flex; align-items:center; justify-content:space-between; gap:.65rem; }
+      .badge { display:inline-flex; align-items:center; gap:.4rem; padding:.38rem .62rem; border-radius:999px; color:#7b5a2d; background:#efe1c8; font-size:.7rem; font-weight:600; white-space:nowrap; }
+      .badge::before { content:""; width:.42rem; aspect-ratio:1; border-radius:50%; background:#b9873f; }
+      .badge--contacted { color:#315f4d; background:#dce8df; }
+      .badge--contacted::before { background:#4f806b; }
+      .empty { padding:3.5rem 1rem; color:var(--muted); text-align:center; }
+      .empty[hidden] { display:none; }
+      .footer-note { margin:1rem 0 0; color:#7a756d; font-size:.76rem; line-height:1.5; }
+      @media (max-width:760px) {
+        .shell { width:calc(100% - 2rem); padding:2rem 0; }
+        .topbar { align-items:flex-start; flex-direction:column; gap:1rem; margin-bottom:1.5rem; }
+        .panel { padding:1rem; }
+        .login-form { flex-direction:column; }
+        .login-form .button { width:100%; }
+        .crm-head { align-items:flex-start; flex-direction:column; }
+        .crm-actions { width:100%; }
+        .crm-actions .button { flex:1; }
+        .table-wrap { overflow:visible; border:0; }
+        table,tbody { display:block; }
+        thead { display:none; }
+        tr { display:grid; gap:.75rem; margin-bottom:.8rem; padding:1rem; border:1px solid var(--line); border-radius:.65rem; background:rgba(255,255,255,.27); }
+        td,td:first-child { width:auto; display:grid; grid-template-columns:minmax(6.5rem,38%) 1fr; align-items:center; gap:.75rem; padding:0; border:0; }
+        td::before { content:attr(data-label); color:#756b5b; font-size:.66rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
+        .date { white-space:normal; }
+        .lead-action { align-items:flex-start; flex-direction:column; }
+        .lead-action .button { width:100%; }
+        .empty { display:block; }
+      }
+      @media (max-width:390px) {
+        h1 { font-size:2.55rem; }
+        td,td:first-child { grid-template-columns:1fr; gap:.3rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div><p class="kicker">Выдох 2.0 · CRM</p><h1>Заявки</h1></div>
+        <a class="back" href="/">← Вернуться на сайт</a>
+      </header>
+
+      <section class="panel login" id="login-panel" aria-labelledby="login-title">
+        <h2 id="login-title">Вход для организаторов</h2>
+        <p>Введите пароль администратора, чтобы открыть список заявок.</p>
+        <form class="login-form" id="login-form">
+          <label for="password" style="position:absolute;left:-10000px">Пароль</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Пароль администратора" required />
+          <button class="button" type="submit">Открыть заявки</button>
+        </form>
+        <p class="status" id="login-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel crm" id="crm" hidden aria-labelledby="crm-title">
+        <div class="crm-head">
+          <div class="crm-summary"><strong id="crm-title">0 заявок</strong><span id="new-count"></span></div>
+          <div class="crm-actions"><button class="button button--quiet" type="button" id="refresh">Обновить</button><button class="button button--quiet" type="button" id="logout">Выйти</button></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>№</th><th>Имя</th><th>Telegram</th><th>Получена</th><th>Статус</th></tr></thead>
+            <tbody id="lead-list"></tbody>
+          </table>
+          <div class="empty" id="empty" hidden>Заявок пока нет.</div>
+        </div>
+        <p class="status" id="crm-status" role="status" aria-live="polite"></p>
+        <p class="footer-note">В списке отображаются последние 500 заявок. Пароль сохраняется только до закрытия этой вкладки.</p>
+      </section>
+    </main>
+    <script>
+      const loginPanel=document.getElementById('login-panel');
+      const loginForm=document.getElementById('login-form');
+      const loginStatus=document.getElementById('login-status');
+      const crm=document.getElementById('crm');
+      const crmStatus=document.getElementById('crm-status');
+      const leadList=document.getElementById('lead-list');
+      const empty=document.getElementById('empty');
+      const title=document.getElementById('crm-title');
+      const newCount=document.getElementById('new-count');
+      let password=sessionStorage.getItem('vydokh-admin-password')||'';
+
+      function wordForm(count){const mod100=count%100;const mod10=count%10;if(mod100>=11&&mod100<=14)return'заявок';if(mod10===1)return'заявка';if(mod10>=2&&mod10<=4)return'заявки';return'заявок';}
+      function telegramUrl(value){const trimmed=value.trim();const username=trimmed.replace(/^https?:\/\/(?:www\.)?t\.me\//i,'').replace(/^@/,'').split(/[/?#]/)[0];return /^[A-Za-z0-9_]{4,}$/.test(username)?`https://t.me/${username}`:null;}
+      function formatDate(value){const date=new Date(Number(value));return Number.isNaN(date.getTime())?'—':new Intl.DateTimeFormat('ru-RU',{dateStyle:'medium',timeStyle:'short'}).format(date);}
+      function cell(label,content,className=''){const td=document.createElement('td');td.dataset.label=label;if(className)td.className=className;if(content instanceof Node)td.append(content);else td.textContent=content;return td;}
+      function render(leads){leadList.replaceChildren();empty.hidden=leads.length!==0;title.textContent=`${leads.length} ${wordForm(leads.length)}`;const fresh=leads.filter(lead=>lead.status!=='contacted').length;newCount.textContent=fresh?`Новых: ${fresh}`:'Все обработаны';for(const lead of leads){const row=document.createElement('tr');row.append(cell('№',String(lead.id)),cell('Имя',lead.name,'name'));const link=telegramUrl(lead.telegram);let tg;if(link){tg=document.createElement('a');tg.className='telegram';tg.href=link;tg.target='_blank';tg.rel='noopener noreferrer';tg.textContent=lead.telegram;}else{tg=document.createElement('span');tg.className='telegram';tg.textContent=lead.telegram;}row.append(cell('Telegram',tg),cell('Получена',formatDate(lead.created_at),'date'));const wrap=document.createElement('div');wrap.className='lead-action';const badge=document.createElement('span');const contacted=lead.status==='contacted';badge.className=`badge${contacted?' badge--contacted':''}`;badge.textContent=contacted?'Связались':'Новая';const button=document.createElement('button');button.type='button';button.className='button button--small';button.textContent=contacted?'Вернуть в новые':'Отметить: связались';button.addEventListener('click',()=>setStatus(lead.id,contacted?'new':'contacted',button));wrap.append(badge,button);row.append(cell('Статус',wrap));leadList.append(row);}}
+      async function request(path,options={}){const response=await fetch(path,{...options,headers:{...(options.body?{'content-type':'application/json'}:{}),authorization:`Bearer ${password}`,...options.headers}});const body=await response.json().catch(()=>({}));if(!response.ok)throw new Error(body.error||'Не удалось выполнить запрос.');return body;}
+      async function loadLeads(){crmStatus.textContent='Загружаем заявки…';try{const data=await request('/api/admin/leads');loginPanel.hidden=true;crm.hidden=false;loginStatus.textContent='';render(data.leads||[]);crmStatus.textContent='';sessionStorage.setItem('vydokh-admin-password',password);}catch(error){crmStatus.textContent='';loginPanel.hidden=false;crm.hidden=true;loginStatus.textContent=error.message;if(error.message==='Неверный пароль.')sessionStorage.removeItem('vydokh-admin-password');}}
+      async function setStatus(id,status,button){button.disabled=true;crmStatus.textContent='Сохраняем…';try{await request(`/api/admin/leads/${id}`,{method:'PATCH',body:JSON.stringify({status})});await loadLeads();}catch(error){crmStatus.textContent=error.message;}finally{button.disabled=false;}}
+      loginForm.addEventListener('submit',event=>{event.preventDefault();password=String(new FormData(loginForm).get('password')).trim();loadLeads();});
+      document.getElementById('refresh').addEventListener('click',loadLeads);
+      document.getElementById('logout').addEventListener('click',()=>{password='';sessionStorage.removeItem('vydokh-admin-password');crm.hidden=true;loginPanel.hidden=false;loginForm.reset();loginStatus.textContent='';document.getElementById('password').focus();});
+      if(password)loadLeads();
+    </script>
+  </body>
+</html>

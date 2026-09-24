@@ -80,7 +80,7 @@
       .guides { background:var(--paper); }
       .guides__grid { min-height:100svh; display:grid; grid-template-columns:minmax(540px,1.35fr) 1fr 1fr; }
       .guides__copy { display:flex; flex-direction:column; justify-content:center; padding:clamp(3rem,4vw,4.5rem); }
-      .guides__title { max-width:520px; font-size:clamp(3rem,4vw,4.2rem); line-height:1.05; }
+      .guides__title { max-width:520px; font-size:clamp(3rem,3.8vw,4rem); line-height:1.05; }
       .guides__title span { white-space:nowrap; }
       .bio-list { display:grid; gap:1.65rem; margin-top:2.4rem; padding-top:2rem; border-top:1px solid var(--line); }
       .bio h3 { margin:0 0 .5rem; font-size:.92rem; letter-spacing:.08em; }
@@ -186,8 +186,12 @@
       .contact-field input { width:100%; min-height:3.15rem; padding:.8rem .95rem; color:var(--ink); background:#f8f5ef; border:1px solid #b9aa91; border-radius:.5rem; outline:0; }
       .contact-field input:focus { border-color:#765d3c; box-shadow:0 0 0 3px rgba(141,112,72,.13); }
       .contact-submit { justify-self:start; }
+      .contact-submit:disabled { cursor:wait; opacity:.68; transform:none; }
       .contact-hint { grid-column:1/-1; margin:0; color:#6d6e69; font-size:.78rem; line-height:1.5; }
       .contact-form-status { min-height:1.3em; margin:0; color:#6d5a3f; font-size:.78rem; }
+      .contact-form-status[data-state="success"] { color:#315f4d; }
+      .contact-form-status[data-state="error"] { color:#8b453d; }
+      .contact-trap { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
 
       [data-reveal] { opacity:0; transform:translateY(20px); transition:opacity .65s ease,transform .65s ease; }
       [data-reveal].is-visible { opacity:1; transform:none; }
@@ -214,6 +218,7 @@
         .not-item .gen-icon { align-self:center; }
       }
       @media (max-width:700px) {
+        body { overflow-x:hidden; }
         .section { min-height:auto; }
         .container { width:calc(100% - 2rem); }
         .eyebrow { margin-bottom:1rem; }
@@ -237,10 +242,10 @@
         .guides__copy { padding:4rem 1.25rem; }
         .guides__title { font-size:2.75rem; }
         .guides__title span { white-space:normal; }
-        .guide-card { min-height:610px; }
-        .guide-card--elena,.guide-card--anna { background-size:300% auto; }
-        .guide-card--elena { background-position:61% 24%; }
-        .guide-card--anna { background-position:106% 24%; }
+        .guide-card { min-height:clamp(500px,145vw,610px); }
+        .guide-card--elena,.guide-card--anna { background-size:370% auto; }
+        .guide-card--elena { background-position:57% 24%; }
+        .guide-card--anna { background-position:100% 24%; }
         .location { min-height:700px; background-position:center; }
         .location::before { background:linear-gradient(90deg,rgba(5,8,10,.56),rgba(5,8,10,.18)); }
         .location__title { font-size:3.5rem; }
@@ -265,10 +270,27 @@
         .cta-card > .gen-icon { width:5.2rem; }
         .cta-actions { display:grid; }
         .cta-button { width:100%; }
-        .contact-dialog { padding:1.35rem; }
+        .contact-modal { align-items:end; padding:0; }
+        .contact-dialog { width:100%; max-height:94svh; padding:1.35rem max(1.1rem,env(safe-area-inset-right)) max(1.35rem,env(safe-area-inset-bottom)) max(1.1rem,env(safe-area-inset-left)); border-radius:1rem 1rem 0 0; }
+        .contact-title { padding-right:2.6rem; font-size:clamp(2rem,11vw,3rem); }
+        .contact-person { min-width:0; }
+        .contact-person > span { min-width:0; }
+        .contact-person span { overflow-wrap:anywhere; }
         .contact-list,.contact-form { grid-template-columns:1fr; }
         .contact-form__title,.contact-hint { grid-column:auto; }
         .closing__photo { min-height:390px; background-size:cover; background-position:64% center; }
+      }
+      @media (max-width:380px) {
+        .hero { min-height:720px; }
+        .hero__title { font-size:3.35rem; }
+        .concept__title,.location__title,.pricing__title { font-size:2.75rem; }
+        .guides__title,.program__title,.closing__title { font-size:2.45rem; }
+        .program-item { grid-template-columns:62px 1fr; gap:.8rem; }
+        .program-icon { width:58px; }
+        .program-icon .gen-icon { width:3.55rem; }
+        .closing-fact { padding-inline:.45rem; font-size:.59rem; }
+        .closing-fact .program-icon { width:62px; }
+        .cta-card { padding:1.25rem; }
       }
     </style>
   </head>
@@ -339,9 +361,10 @@
           <h3 class="contact-form__title">Попросить связаться с вами</h3>
           <div class="contact-field"><label for="contact-name">Имя</label><input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required /></div>
           <div class="contact-field"><label for="contact-telegram">Ваш Telegram</label><input id="contact-telegram" name="telegram" type="text" autocomplete="off" placeholder="@username" required /></div>
+          <div class="contact-trap" aria-hidden="true"><label for="contact-website">Сайт</label><input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
           <button class="cta-button contact-submit" type="submit">Передать контакт</button>
           <p class="contact-form-status" id="contact-form-status" role="status" aria-live="polite"></p>
-          <p class="contact-hint">После нажатия откроется чат с Еленой и готовым сообщением — останется отправить его.</p>
+          <p class="contact-hint">Контакт сохранится в заявках организаторов. Мы напишем вам в Telegram.</p>
         </form>
       </div>
     </div>
@@ -361,7 +384,7 @@
       contactModal.addEventListener('click',event=>{if(event.target===contactModal)hideContact();});
       contactDialog.addEventListener('keydown',event=>{if(event.key!=='Tab')return;const focusable=[...contactDialog.querySelectorAll('a[href],button,input')].filter(node=>!node.disabled);const first=focusable[0];const last=focusable[focusable.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}});
       document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!contactModal.hidden)hideContact();});
-      document.getElementById('contact-form').addEventListener('submit',event=>{event.preventDefault();const form=new FormData(event.currentTarget);const name=String(form.get('name')).trim();const telegram=String(form.get('telegram')).trim();const message=`Здравствуйте! Хочу оставить заявку на ретрит «Выдох 2.0».\nИмя: ${name}\nTelegram: ${telegram}\nПожалуйста, свяжитесь со мной.`;const url=`https://t.me/HelenaSpravtseva?text=${encodeURIComponent(message)}`;const opened=window.open(url,'_blank','noopener,noreferrer');if(!opened)window.location.href=url;document.getElementById('contact-form-status').textContent='Открываем Telegram с готовым сообщением.';});
+      document.getElementById('contact-form').addEventListener('submit',async event=>{event.preventDefault();const formElement=event.currentTarget;const form=new FormData(formElement);const name=String(form.get('name')).trim();const telegram=String(form.get('telegram')).trim();const website=String(form.get('website')).trim();const button=formElement.querySelector('button[type="submit"]');const status=document.getElementById('contact-form-status');status.dataset.state='';status.textContent='Сохраняем заявку…';button.disabled=true;try{const response=await fetch('/api/leads',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name,telegram,website})});const result=await response.json().catch(()=>({}));if(!response.ok)throw new Error(result.error||'Не удалось сохранить заявку.');formElement.reset();status.dataset.state='success';status.textContent='Спасибо! Контакт сохранён — мы свяжемся с вами в Telegram.';}catch(error){status.dataset.state='error';status.textContent=error instanceof Error?error.message:'Не удалось сохранить заявку. Попробуйте ещё раз.';}finally{button.disabled=false;}});
     </script>
   </body>
 </html>
