@@ -3,190 +3,264 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#e7e5df" />
-    <meta
-      name="description"
-      content="Выдох 2.0 — камерный ретрит 30 октября — 1 ноября в Подмосковье. Кундалини-йога, психология и работа с состоянием."
-    />
+    <meta name="theme-color" content="#0a1b1a" />
+    <meta name="description" content="Выдох 2.0 — камерный ретрит 30 октября — 1 ноября в Московской области." />
     <title>Выдох 2.0 — камерный ретрит</title>
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232d302d'/%3E%3Cpath d='M17 28c9-1 17 3 22 10M24 18c4 6 11 8 22 7M20 45c8-4 17-4 27 1' fill='none' stroke='%23d2b27f' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Prata&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a1b1a'/%3E%3Cpath d='M17 28c9-1 17 3 22 10M24 18c4 6 11 8 22 7M20 45c8-4 17-4 27 1' fill='none' stroke='%23b89662' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E" />
     <style>
-      :root {
-        color-scheme: light;
-        --page: #e7e5df;
-        --ink: #252725;
-        --accent: #9d8059;
+      :root { --paper:#f2efe8; --paper-2:#e9e5dc; --ink:#171b19; --muted:#656963; --forest:#081c1b; --gold:#aa8651; --line:rgba(91,75,51,.28); --serif:"Prata","Bodoni 72",Didot,Georgia,serif; --sans:"Manrope",Arial,sans-serif; }
+      * { box-sizing:border-box; }
+      html { scroll-behavior:smooth; background:var(--forest); }
+      body { margin:0; min-width:320px; color:var(--ink); background:var(--paper); font-family:var(--sans); }
+      button,a { font:inherit; }
+      img,svg { display:block; }
+      svg.icon { width:1.65rem; height:1.65rem; fill:none; stroke:currentColor; stroke-width:1.65; stroke-linecap:round; stroke-linejoin:round; }
+      .skip-link { position:fixed; z-index:100; top:1rem; left:1rem; padding:.75rem 1rem; color:#fff; background:#111; border-radius:2rem; translate:0 -180%; }
+      .skip-link:focus { translate:0; }
+      .section { position:relative; min-height:100svh; overflow:hidden; }
+      .container { width:min(1180px,calc(100% - 3rem)); margin-inline:auto; }
+      .eyebrow { margin:0 0 1.5rem; font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; }
+      .display { margin:0; font-family:var(--serif); font-weight:400; line-height:.98; letter-spacing:-.035em; }
+      .gold { color:var(--gold); }
+      .rule { width:4.25rem; height:1px; margin:1.7rem 0; background:currentColor; opacity:.65; }
+      .photo-tone { background-blend-mode:normal; }
+      .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+      .hero { min-height:max(760px,100svh); color:#f7f0e4; background:url("assets/slide-1.jpg") center/cover no-repeat; }
+      .hero::before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#061817 0%,#061817 72%,rgba(6,24,23,.96) 80%,rgba(5,15,14,.16) 100%); }
+      .hero::after { content:""; position:absolute; inset:0; background:linear-gradient(0deg,rgba(5,15,14,.55),transparent 42%); }
+      .hero__inner { position:relative; z-index:2; min-height:inherit; display:flex; flex-direction:column; justify-content:flex-end; padding-block:clamp(5rem,10vh,8rem) 3.4rem; }
+      .hero__title { max-width:980px; font-size:clamp(4rem,11.4vw,9.4rem); white-space:nowrap; }
+      .hero__lead { max-width:590px; margin:1.25rem 0 0; font-size:clamp(1.15rem,2vw,1.65rem); font-weight:300; line-height:1.4; }
+      .hero__meta { display:flex; align-items:stretch; gap:1.65rem; margin-top:2.3rem; padding-top:1.8rem; border-top:1px solid rgba(229,196,143,.65); width:fit-content; }
+      .meta-item { display:flex; align-items:center; gap:.75rem; font-size:clamp(.9rem,1.35vw,1.08rem); }
+      .meta-item + .meta-item { padding-left:1.65rem; border-left:1px solid rgba(247,240,228,.35); }
+      .meta-item .icon { color:#d5af6c; }
+      .hero__tags { display:flex; flex-wrap:wrap; gap:.8rem 1.5rem; margin-top:2.2rem; font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; }
+      .hero__tags span + span::before { content:"•"; margin-right:1.5rem; color:#d5af6c; }
+      .scroll-cue { position:absolute; z-index:3; right:2.5rem; bottom:2.5rem; color:#fff; opacity:.75; text-decoration:none; writing-mode:vertical-rl; font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; }
+
+      .concept { min-height:max(760px,100svh); color:#f4efe6; background:#061918 url("assets/slide-2.jpg") center/auto 127% no-repeat; }
+      .concept::after { content:""; position:absolute; inset:0; background:rgba(7,22,21,.1); }
+      .concept__panel { position:relative; z-index:2; width:min(54%,790px); min-height:max(760px,100svh); display:flex; flex-direction:column; justify-content:center; padding:clamp(4rem,8vw,8rem) clamp(2rem,5vw,6.5rem); background:linear-gradient(90deg,#061918 0%,rgba(6,25,24,.99) 78%,rgba(6,25,24,.9) 94%,transparent); }
+      .concept__title { font-size:clamp(3.1rem,6.3vw,6.4rem); }
+      .not-grid { display:grid; grid-template-columns:repeat(3,1fr); width:min(610px,100%); margin:.5rem 0 2.5rem; }
+      .not-item { min-height:130px; display:grid; align-content:center; gap:.8rem; padding:0 1.1rem; border-left:1px solid rgba(183,145,89,.55); font-size:.72rem; line-height:1.45; text-transform:uppercase; }
+      .not-item:first-child { padding-left:0; border-left:0; }
+      .not-item .icon { color:#c49b5d; }
+      .concept__copy { max-width:600px; margin:0; font-size:clamp(1rem,1.45vw,1.25rem); line-height:1.65; }
+      .cycle { display:block; margin-top:.4rem; color:#c49b5d; font-weight:500; text-transform:uppercase; }
+      .concept__ending { max-width:610px; margin:2rem 0 0; padding-top:1.8rem; border-top:1px solid rgba(183,145,89,.6); font-size:1.15rem; }
+      .concept__ending em { display:block; margin-top:.35rem; color:#c49b5d; font-family:var(--serif); font-size:1.7rem; }
+
+      .guides { background:var(--paper); }
+      .guides__grid { min-height:100svh; display:grid; grid-template-columns:minmax(540px,1.35fr) 1fr 1fr; }
+      .guides__copy { display:flex; flex-direction:column; justify-content:center; padding:clamp(3rem,4vw,4.5rem); }
+      .guides__title { max-width:520px; font-size:clamp(3rem,4vw,4.2rem); line-height:1.05; }
+      .guides__title span { white-space:nowrap; }
+      .bio-list { display:grid; gap:1.65rem; margin-top:2.4rem; padding-top:2rem; border-top:1px solid var(--line); }
+      .bio h3 { margin:0 0 .5rem; font-size:.92rem; letter-spacing:.08em; }
+      .bio p { margin:0; color:var(--muted); line-height:1.62; }
+      .bio p + p { margin-top:.25rem; }
+      .guide-card { position:relative; min-height:100svh; overflow:hidden; background-color:#222; background-image:url("assets/slide-3.jpg"); background-repeat:no-repeat; }
+      .guide-card--elena { background-size:340% auto; background-position:58% 68%; filter:grayscale(1) contrast(1.02); }
+      .guide-card--anna { background-size:340% auto; background-position:101% 68%; }
+      .guide-card::after { content:""; position:absolute; inset:auto 0 0; height:30%; background:linear-gradient(transparent 0%,#050d0c 42%); }
+      .guide-card__caption { position:absolute; z-index:2; inset:auto 2rem 2rem; color:#fff; }
+      .guide-card__name { margin:0; font-family:var(--serif); font-size:clamp(2rem,3.4vw,3.1rem); }
+      .guide-card__role { margin:.45rem 0 0; font-size:.72rem; line-height:1.5; letter-spacing:.07em; text-transform:uppercase; }
+
+      .location { min-height:max(720px,100svh); color:#fff; background:#081a18 url("assets/slide-4.jpg") center/auto 127% no-repeat; }
+      .location::before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#081a18 0%,rgba(8,26,24,.98) 50%,rgba(8,20,18,.5) 72%,rgba(8,20,18,.04) 100%); }
+      .location__inner { position:relative; z-index:1; min-height:inherit; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding-block:5rem; }
+      .location__title { max-width:760px; font-size:clamp(3.6rem,7.4vw,7.4rem); }
+      .location__place { display:flex; align-items:center; gap:.8rem; margin:0; font-family:var(--serif); font-size:clamp(1.7rem,3vw,2.55rem); }
+      .location__place .icon { width:2rem; height:2rem; }
+      .location__facts { margin:.75rem 0 0; font-size:clamp(1rem,1.6vw,1.25rem); letter-spacing:.035em; }
+      .location__note { position:absolute; bottom:2.4rem; left:1.5rem; margin:0; font-size:.76rem; opacity:.78; }
+
+      .program { min-height:100svh; display:grid; grid-template-columns:2fr 1fr; background:var(--paper); }
+      .program__copy { display:flex; flex-direction:column; justify-content:center; padding:clamp(4rem,7vw,7rem); }
+      .program__title { font-size:clamp(2.8rem,5.4vw,5.6rem); line-height:1.06; }
+      .program-list { display:grid; gap:1.4rem; margin-top:2.8rem; }
+      .program-item { display:grid; grid-template-columns:92px 1fr; align-items:center; gap:1.4rem; }
+      .program-icon { width:84px; aspect-ratio:1; display:grid; place-items:center; color:#725d3e; border:1px solid #a9916e; border-radius:50%; }
+      .program-icon .icon { width:2.9rem; height:2.9rem; stroke-width:1.25; }
+      .program-item h3 { margin:0 0 .35rem; font-family:var(--serif); font-size:1.45rem; font-weight:400; }
+      .program-item p { margin:0; color:#373b37; line-height:1.55; }
+      .program__note { margin:2.5rem 0 0; font-size:.9rem; }
+      .program__photo { position:relative; min-height:100%; background:var(--paper); overflow:hidden; }
+      .program__photo::after { content:""; position:absolute; inset:0; background:url("assets/slide-5.jpg") right center/auto 127% no-repeat; filter:saturate(.72) contrast(.97); }
+
+      .pricing { padding:clamp(5rem,8vw,8rem) 0 3rem; background:linear-gradient(110deg,#f4f0e9,#e7e2d8); }
+      .pricing__title { font-size:clamp(3rem,5.8vw,5.9rem); }
+      .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.35rem; margin-top:2.8rem; }
+      .price-card { min-height:390px; display:flex; flex-direction:column; text-align:center; border:1px solid #aa9778; border-radius:.45rem; background:rgba(248,246,241,.42); overflow:hidden; }
+      .price-card__head { min-height:94px; display:grid; place-items:center; padding:1rem; border-bottom:1px solid #aa9778; font-size:.83rem; font-weight:500; line-height:1.45; letter-spacing:.08em; text-transform:uppercase; }
+      .price-card--featured .price-card__head { color:#fff; background:#9d7c48; }
+      .price-card__body { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2rem; }
+      .price { margin:0; font-family:var(--serif); font-size:clamp(2.55rem,4.4vw,4.35rem); white-space:nowrap; }
+      .price small { font-size:.46em; }
+      .sprig { display:flex; align-items:center; gap:.8rem; width:min(200px,100%); margin:1.2rem auto; color:#9d7c48; }
+      .sprig::before,.sprig::after { content:""; flex:1; height:1px; background:currentColor; opacity:.5; }
+      .price-card__copy { max-width:230px; margin:0; line-height:1.65; }
+      .included-title { margin:2.25rem 0 1.35rem; text-align:center; }
+      .included { display:grid; grid-template-columns:repeat(5,1fr); gap:1rem; }
+      .included-item { display:grid; justify-items:center; gap:.75rem; text-align:center; font-size:.67rem; letter-spacing:.06em; text-transform:uppercase; }
+      .included-item .icon { width:2.4rem; height:2.4rem; color:#54452f; }
+      .pricing__note { margin:2rem 0 0; padding-top:1.2rem; text-align:center; color:var(--muted); border-top:1px solid #ad9876; font-size:.78rem; }
+
+      .closing { min-height:100svh; display:grid; grid-template-columns:58% 42%; background:var(--paper); }
+      .closing__copy { display:flex; flex-direction:column; justify-content:center; padding:clamp(4rem,7vw,7rem); }
+      .closing__title { max-width:900px; font-size:clamp(2.6rem,3vw,3.5rem); line-height:1.12; }
+      .closing__lead { margin:1.3rem 0 0; font-size:1.05rem; line-height:1.6; }
+      .closing__facts { display:grid; grid-template-columns:repeat(4,1fr); margin:2.4rem 0; }
+      .closing-fact { display:grid; justify-items:center; gap:.75rem; padding:0 1rem; text-align:center; border-left:1px solid var(--line); font-size:.66rem; font-weight:600; line-height:1.45; text-transform:uppercase; }
+      .closing-fact:first-child { border-left:0; padding-left:0; }
+      .closing-fact .program-icon { width:70px; }
+      .closing-fact .icon { width:2rem; height:2rem; }
+      .cta-card { display:grid; grid-template-columns:auto 1fr; align-items:center; gap:1.5rem; max-width:760px; padding:1.6rem; border:1px solid #b19a78; border-radius:.55rem; }
+      .cta-card .icon { width:4.4rem; height:4.4rem; color:#857150; }
+      .cta-card p { margin:0; line-height:1.62; }
+      .cta-button { margin-top:1rem; padding:.85rem 1.25rem; color:#fff; background:#8d7048; border:0; border-radius:999px; cursor:pointer; transition:transform .2s ease,background .2s ease; }
+      .cta-button:hover { transform:translateY(-2px); background:#765d3c; }
+      .cta-status { min-height:1.3em; margin:.6rem 0 0; color:#6d5a3f; font-size:.78rem; }
+      .closing__photo { min-height:100%; background:url("assets/slide-7.jpg") right center/auto 100% no-repeat; filter:saturate(.72) contrast(.97); clip-path:polygon(8% 0,100% 0,100% 100%,0 100%,4% 90%,1% 80%,6% 70%,2% 59%,7% 49%,2% 38%,6% 27%,3% 14%); }
+
+      [data-reveal] { opacity:0; transform:translateY(20px); transition:opacity .65s ease,transform .65s ease; }
+      [data-reveal].is-visible { opacity:1; transform:none; }
+      @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } [data-reveal] { opacity:1; transform:none; transition:none; } }
+      @media (max-width:1100px) {
+        .container { width:min(100% - 2rem,780px); }
+        .hero::before { background:linear-gradient(90deg,#061817 0%,#061817 76%,rgba(6,24,23,.94) 84%,rgba(5,15,14,.22) 100%); }
+        .hero__title { font-size:clamp(4rem,14vw,7.4rem); }
+        .concept__panel { width:75%; }
+        .guides__grid { grid-template-columns:1fr 1fr; }
+        .guides__copy { grid-column:1/-1; min-height:auto; padding-block:5rem; }
+        .guide-card { min-height:720px; }
+        .program { grid-template-columns:1fr; }
+        .program__photo { min-height:430px; }
+        .program__photo::after { background-size:260% auto; background-position:right center; }
+        .price-grid { gap:.8rem; }
+        .price-card__body { padding:1.5rem 1rem; }
+        .closing { grid-template-columns:1fr; }
+        .closing__copy { order:1; }
+        .closing__photo { min-height:520px; order:2; background-size:260% auto; background-position:right center; clip-path:polygon(0 7%,8% 2%,18% 6%,30% 1%,43% 5%,56% 2%,69% 7%,82% 2%,93% 6%,100% 3%,100% 100%,0 100%); }
       }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-        background: var(--page);
-      }
-
-      body {
-        margin: 0;
-        min-width: 320px;
-        color: var(--ink);
-        background:
-          radial-gradient(circle at 12% 6%, rgba(255, 255, 255, 0.75), transparent 26rem),
-          var(--page);
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      }
-
-      .skip-link {
-        position: fixed;
-        z-index: 20;
-        top: 0.75rem;
-        left: 0.75rem;
-        translate: 0 -200%;
-        padding: 0.7rem 1rem;
-        border-radius: 999px;
-        color: white;
-        background: var(--ink);
-        transition: translate 160ms ease;
-      }
-
-      .skip-link:focus {
-        translate: 0;
-      }
-
-      main {
-        width: 100%;
-        overflow: hidden;
-      }
-
-      .slide {
-        position: relative;
-        width: 100%;
-        margin: 0;
-        isolation: isolate;
-        background: #f0efeb;
-      }
-
-      .slide + .slide {
-        border-top: 1px solid rgba(37, 39, 37, 0.08);
-      }
-
-      .slide::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        pointer-events: none;
-        background: rgba(221, 227, 222, 0.055);
-        mix-blend-mode: color;
-      }
-
-      .slide img {
-        display: block;
-        width: 100%;
-        height: auto;
-        filter: saturate(0.86) sepia(0.025) contrast(0.98) brightness(1.015);
-      }
-
-      .slide:first-of-type img,
-      .slide:nth-of-type(2) img,
-      .slide:last-of-type img {
-        filter: saturate(0.78) sepia(0.015) contrast(0.98) brightness(1.025);
-      }
-
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-
-      @media (min-width: 1600px) {
-        main {
-          max-width: 1800px;
-          margin-inline: auto;
-          box-shadow: 0 0 80px rgba(35, 40, 35, 0.12);
-        }
-      }
-
-      @media (prefers-reduced-motion: no-preference) {
-        .slide {
-          opacity: 0;
-          translate: 0 12px;
-          transition: opacity 500ms ease, translate 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
-        }
-
-        .slide.is-visible {
-          opacity: 1;
-          translate: 0;
-        }
-      }
-
-      @media (max-width: 700px) {
-        body {
-          background: #f0efeb;
-        }
-
-        .slide + .slide {
-          margin-top: 0.45rem;
-          border-top: 0;
-        }
+      @media (max-width:700px) {
+        .section { min-height:auto; }
+        .container { width:calc(100% - 2rem); }
+        .eyebrow { margin-bottom:1rem; }
+        .hero { min-height:780px; background-position:67% center; }
+        .hero::before { background:linear-gradient(90deg,#061817 0%,rgba(6,24,23,.97) 82%,rgba(5,15,14,.34) 100%); }
+        .hero__inner { justify-content:center; padding-block:4.5rem 3rem; }
+        .hero__title { font-size:clamp(3.4rem,19vw,5.7rem); white-space:normal; }
+        .hero__lead { font-size:1rem; }
+        .hero__meta { flex-direction:column; gap:.9rem; margin-top:2rem; }
+        .meta-item + .meta-item { padding:.9rem 0 0; border:0; border-top:1px solid rgba(247,240,228,.25); }
+        .hero__tags { gap:.55rem; font-size:.6rem; line-height:1.5; }
+        .hero__tags span + span::before { margin-right:.55rem; }
+        .scroll-cue { display:none; }
+        .concept { background-position:70% center; }
+        .concept__panel { width:100%; min-height:760px; padding:4rem 1.2rem; background:rgba(5,24,23,.9); backdrop-filter:blur(5px); }
+        .concept__title { font-size:3.2rem; }
+        .not-grid { grid-template-columns:1fr; gap:.2rem; }
+        .not-item { min-height:70px; grid-template-columns:40px 1fr; align-items:center; padding:.75rem 0; border-left:0; border-top:1px solid rgba(183,145,89,.35); }
+        .not-item:first-child { border-top:0; }
+        .guides__grid { grid-template-columns:1fr; }
+        .guides__copy { padding:4rem 1.25rem; }
+        .guides__title { font-size:2.75rem; }
+        .guides__title span { white-space:normal; }
+        .guide-card { min-height:610px; }
+        .guide-card--elena,.guide-card--anna { background-size:300% auto; }
+        .guide-card--elena { background-position:61% 24%; }
+        .guide-card--anna { background-position:106% 24%; }
+        .location { min-height:700px; background-position:right center; }
+        .location::before { background:rgba(7,21,19,.55); }
+        .location__title { font-size:3.5rem; }
+        .location__note { left:1rem; right:1rem; }
+        .program__copy { padding:4rem 1.2rem; }
+        .program__title { font-size:2.75rem; }
+        .program-item { grid-template-columns:74px 1fr; gap:1rem; }
+        .program-icon { width:68px; }
+        .program-icon .icon { width:2.4rem; height:2.4rem; }
+        .program__photo { min-height:360px; }
+        .pricing { padding-top:4rem; }
+        .pricing__title { font-size:3rem; }
+        .price-grid { grid-template-columns:1fr; }
+        .price-card { min-height:350px; }
+        .included { grid-template-columns:repeat(2,1fr); gap:1.6rem 1rem; }
+        .included-item:last-child { grid-column:1/-1; }
+        .closing__copy { padding:4rem 1.2rem 3rem; }
+        .closing__title { font-size:2.85rem; }
+        .closing__facts { grid-template-columns:repeat(2,1fr); gap:1.4rem 0; }
+        .closing-fact:nth-child(3) { border-left:0; }
+        .cta-card { grid-template-columns:1fr; }
+        .cta-card .icon { width:3rem; height:3rem; }
+        .closing__photo { min-height:390px; background-size:260% auto; background-position:right center; }
       }
     </style>
   </head>
   <body>
-    <a class="skip-link" href="#retreat">К содержанию</a>
-    <main id="retreat" aria-label="Презентация ретрита Выдох 2.0">
-      <figure class="slide">
-        <img src="assets/slide-1.jpg" alt="Выдох 2.0. Камерный ретрит 30 октября — 1 ноября в Московской области." />
-        <figcaption class="sr-only">Кундалини-йога, психология и работа с состоянием.</figcaption>
-      </figure>
-      <figure class="slide">
-        <img src="assets/slide-2.jpg" alt="Что такое Выдох: не отпуск, не бизнес-форум и не нетворкинг ради контактов." loading="lazy" />
-        <figcaption class="sr-only">Контроль, ответственность, результат — и снова контроль. Наконец можно позволить себе выдохнуть.</figcaption>
-      </figure>
-      <figure class="slide">
-        <img src="assets/slide-3.jpg" alt="Проводники ретрита: Елена и Анна — два взгляда на состояние." loading="lazy" />
-        <figcaption class="sr-only">Елена — мастер кундалини-йоги и экзистенциальный психотерапевт. Анна — практикующий психотерапевт и гештальт-терапевт.</figcaption>
-      </figure>
-      <figure class="slide">
-        <img src="assets/slide-4.jpg" alt="Место, где становится тихо: лес, вода и воздух в Подмосковье." loading="lazy" />
-        <figcaption class="sr-only">Тихая эколокация с уединением.</figcaption>
-      </figure>
-      <figure class="slide">
-        <img src="assets/slide-5.jpg" alt="Три дня: тело, психика и состояние." loading="lazy" />
-        <figcaption class="sr-only">Кундалини-йога, телесные и психотерапевтические практики, рефлексия, работа с внутренними состояниями, тишина и восстановление.</figcaption>
-      </figure>
-      <figure class="slide">
-        <img src="assets/slide-6.jpg" alt="Три тарифа ретрита: 63 999, 65 999 и 70 999 рублей." loading="lazy" />
-        <figcaption class="sr-only">В стоимость входят проживание, питание, программа, материалы и сопровождение ведущих.</figcaption>
-      </figure>
-      <figure class="slide">
-        <img src="assets/slide-7.jpg" alt="Тебе не нужен ещё один рывок. Тебе просто пора выдохнуть." loading="lazy" />
-        <figcaption class="sr-only">Ретрит для предпринимателей и создателей. 30 октября — 1 ноября, Московская область.</figcaption>
-      </figure>
+    <a class="skip-link" href="#main">К содержанию</a>
+    <svg class="sr-only" aria-hidden="true"><defs>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></symbol>
+      <symbol id="i-case" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3M3 12h18M10 12v2h4v-2"/></symbol>
+      <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-4 2.5-6 6-6s6 2 6 6M14 15c3.8-.9 7 1 7 5"/></symbol>
+      <symbol id="i-body" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.3"/><path d="M8 11c1-2 2.2-3 4-3s3 1 4 3M12 8v7M6 20c1-3 3-5 6-5s5 2 6 5M4 20h16"/></symbol>
+      <symbol id="i-mind" viewBox="0 0 24 24"><path d="M9 20v-3H7a3 3 0 0 1-3-3c0-1 .5-2 1.2-2.6A7 7 0 1 1 18 15v5H9Z"/><path d="M10 9h.01M14 9h.01M10 13h4"/></symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M12 21V8M12 15c-5 0-8-3-8-8 5 0 8 3 8 8ZM12 11c5 0 8-3 8-8-5 0-8 3-8 8Z"/></symbol>
+      <symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10H3V11Z"/><path d="M9 21v-7h6v7"/></symbol>
+      <symbol id="i-bowl" viewBox="0 0 24 24"><path d="M4 11h16c0 5-3 8-8 8s-8-3-8-8ZM8 22h8M8 7c0-2 2-2 2-4M13 8c0-2 3-2 3-5"/></symbol>
+      <symbol id="i-lotus" viewBox="0 0 24 24"><path d="M12 20c-5 0-8-3-9-7 4 0 7 1 9 4 2-3 5-4 9-4-1 4-4 7-9 7Z"/><path d="M12 17c-3-3-4-7 0-12 4 5 3 9 0 12ZM7 14c-2-2-2-5-1-8 4 2 5 5 5 9M17 14c2-2 2-5 1-8-4 2-5 5-5 9"/></symbol>
+      <symbol id="i-doc" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5V3Z"/><path d="M15 3v5h4M8 12h8M8 16h5M17 18l4-4"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-5 3-8 8-8s8 3 8 8H4Z"/></symbol>
+    </defs></svg>
+    <main id="main">
+      <section class="section hero photo-tone" aria-labelledby="hero-title">
+        <div class="container hero__inner">
+          <h1 class="display hero__title" id="hero-title" data-reveal>ВЫДОХ 2.0</h1>
+          <p class="hero__lead" data-reveal>Камерный ретрит для тех,<br />кто привык держать всё под контролем</p>
+          <div class="hero__meta" data-reveal><div class="meta-item"><svg class="icon"><use href="#i-calendar"/></svg><span>30 октября – 1 ноября</span></div><div class="meta-item"><svg class="icon"><use href="#i-pin"/></svg><span>Московская область</span></div></div>
+          <div class="hero__tags" data-reveal><span>Кундалини-йога</span><span>Психология</span><span>Работа с состоянием</span></div>
+        </div><a class="scroll-cue" href="#concept">Листайте вниз ↓</a>
+      </section>
+      <section class="section concept photo-tone" id="concept" aria-labelledby="concept-title">
+        <div class="concept__panel"><h2 class="display concept__title" id="concept-title" data-reveal>ЧТО ТАКОЕ<br /><span class="gold">«ВЫДОХ»</span></h2><div class="rule"></div>
+          <div class="not-grid" data-reveal><div class="not-item"><svg class="icon"><use href="#i-x"/></svg><span>Не отпуск</span></div><div class="not-item"><svg class="icon"><use href="#i-case"/></svg><span>Не бизнес-форум</span></div><div class="not-item"><svg class="icon"><use href="#i-people"/></svg><span>Не нетворкинг<br />ради контактов</span></div></div>
+          <p class="concept__copy" data-reveal>Это три дня, чтобы выйти из привычного круга:<span class="cycle">контроль → ответственность →<br />результат → снова контроль</span></p><p class="concept__ending" data-reveal>И наконец позволить себе<em>выдохнуть.</em></p>
+        </div>
+      </section>
+      <section class="section guides" aria-labelledby="guides-title"><div class="guides__grid">
+        <div class="guides__copy"><p class="eyebrow">Проводники</p><h2 class="display guides__title" id="guides-title" data-reveal>ДВА<br />ВЗГЛЯДА<br /><span>НА СОСТОЯНИЕ</span></h2><div class="bio-list" data-reveal><article class="bio"><h3>ЕЛЕНА</h3><p>Мастер кундалини-йоги,<br />экзистенциальный психотерапевт, наставник.</p><p>Более 10 лет практики</p></article><article class="bio"><h3>АННА</h3><p>Практикующий психотерапевт,<br />гештальт-терапевт и расстановщик.</p><p>Более 15 лет практики</p></article></div></div>
+        <article class="guide-card guide-card--elena" aria-label="Елена"><div class="guide-card__caption"><h3 class="guide-card__name">ЕЛЕНА</h3><p class="guide-card__role">Кундалини-йога · экзистенциальная психотерапия</p></div></article>
+        <article class="guide-card guide-card--anna" aria-label="Анна"><div class="guide-card__caption"><h3 class="guide-card__name">АННА</h3><p class="guide-card__role">Психотерапия · расстановки</p></div></article>
+      </div></section>
+      <section class="section location photo-tone" aria-labelledby="location-title"><div class="container location__inner"><p class="eyebrow">Выдох · 30 октября – 1 ноября</p><h2 class="display location__title" id="location-title" data-reveal>Место,<br />где становится<br />тихо</h2><div class="rule"></div><p class="location__place" data-reveal><svg class="icon"><use href="#i-pin"/></svg>Подмосковье</p><p class="location__facts" data-reveal>Лес · вода · воздух · уединение</p><p class="location__note">Точная геолокация — участникам после подтверждения</p></div></section>
+      <section class="section program" aria-labelledby="program-title"><div class="program__copy"><h2 class="display program__title" id="program-title" data-reveal>КАК ПРОХОДЯТ<br />ТРИ ДНЯ</h2><div class="program-list">
+        <article class="program-item" data-reveal><div class="program-icon"><svg class="icon"><use href="#i-body"/></svg></div><div><h3>ТЕЛО</h3><p>Кундалини-йога, телесные практики,<br />работа с энергией.</p></div></article>
+        <article class="program-item" data-reveal><div class="program-icon"><svg class="icon"><use href="#i-mind"/></svg></div><div><h3>ПСИХИКА</h3><p>Психотерапевтические практики, рефлексия,<br />работа с внутренними состояниями.</p></div></article>
+        <article class="program-item" data-reveal><div class="program-icon"><svg class="icon"><use href="#i-leaf"/></svg></div><div><h3>СОСТОЯНИЕ</h3><p>Тишина, замедление, восстановление,<br />пространство без привычной нагрузки.</p></div></article></div><p class="program__note">Небольшая группа. Глубокая работа. Поддержка на каждом этапе.</p></div><div class="program__photo" role="img" aria-label="Спокойный интерьер для отдыха"></div></section>
+      <section class="section pricing" aria-labelledby="pricing-title"><div class="container"><h2 class="display pricing__title" id="pricing-title" data-reveal>Выберите время для себя</h2><div class="price-grid">
+        <article class="price-card price-card--featured" data-reveal><div class="price-card__head">Для тех, кто<br />выбирает сегодня</div><div class="price-card__body"><p class="price">63 999 <small>₽</small></p><div class="sprig"><svg class="icon"><use href="#i-leaf"/></svg></div><p class="price-card__copy">Для тех, кто принимает решение сейчас.</p></div></article>
+        <article class="price-card" data-reveal><div class="price-card__head">До 10 сентября</div><div class="price-card__body"><p class="price">65 999 <small>₽</small></p><div class="sprig"><svg class="icon"><use href="#i-leaf"/></svg></div><p class="price-card__copy">Оптимальное время для вашего выбора.</p></div></article>
+        <article class="price-card" data-reveal><div class="price-card__head">Последние места<br />до 16 сентября</div><div class="price-card__body"><p class="price">70 999 <small>₽</small></p><div class="sprig"><svg class="icon"><use href="#i-leaf"/></svg></div><p class="price-card__copy">Для тех, кто готов присоединиться позже.</p></div></article></div>
+        <p class="included-title">В стоимость входит:</p><div class="included" data-reveal><div class="included-item"><svg class="icon"><use href="#i-house"/></svg><span>Проживание</span></div><div class="included-item"><svg class="icon"><use href="#i-bowl"/></svg><span>Питание</span></div><div class="included-item"><svg class="icon"><use href="#i-lotus"/></svg><span>Программа</span></div><div class="included-item"><svg class="icon"><use href="#i-doc"/></svg><span>Материалы</span></div><div class="included-item"><svg class="icon"><use href="#i-user"/></svg><span>Сопровождение<br />ведущих</span></div></div><p class="pricing__note">Количество мест ограничено для сохранения камерности и глубины работы.</p>
+      </div></section>
+      <section class="section closing" aria-labelledby="closing-title"><div class="closing__copy"><h2 class="display closing__title" id="closing-title" data-reveal>ТЕБЕ НЕ НУЖЕН ЕЩЁ ОДИН РЫВОК,<br /><span class="gold">ТЕБЕ ПРОСТО ПОРА ВЫДОХНУТЬ</span></h2><div class="rule"></div><p class="closing__lead">Пространство. Тишина. Восстановление.<br /><strong class="gold">30 октября – 1 ноября.</strong> Московская область.</p>
+        <div class="closing__facts" data-reveal><div class="closing-fact"><div class="program-icon"><svg class="icon"><use href="#i-calendar"/></svg></div><span>30 октября<br />– 1 ноября</span></div><div class="closing-fact"><div class="program-icon"><svg class="icon"><use href="#i-pin"/></svg></div><span>Московская<br />область</span></div><div class="closing-fact"><div class="program-icon"><svg class="icon"><use href="#i-leaf"/></svg></div><span>Камерный<br />ретрит</span></div><div class="closing-fact"><div class="program-icon"><svg class="icon"><use href="#i-people"/></svg></div><span>Для предпринимателей<br />и созидателей</span></div></div>
+        <div class="cta-card" data-reveal><svg class="icon"><use href="#i-leaf"/></svg><div><p>Если вы приняли решение ехать, напишите «<strong>ЕДУ НА ВЫДОХ</strong>» и получите бесплатную <strong>получасовую сессию</strong> с Еленой или Анной.</p><button class="cta-button" type="button" id="copy-cta">Скопировать «ЕДУ НА ВЫДОХ»</button><p class="cta-status" id="cta-status" role="status" aria-live="polite"></p></div></div>
+      </div><div class="closing__photo" role="img" aria-label="Тихое озеро и место для отдыха на закате"></div></section>
     </main>
     <script>
-      const slides = document.querySelectorAll('.slide');
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add('is-visible');
-          });
-        }, { rootMargin: '8% 0px', threshold: 0.08 });
-        slides.forEach((slide) => observer.observe(slide));
-      } else {
-        slides.forEach((slide) => slide.classList.add('is-visible'));
-      }
+      const reveal=document.querySelectorAll('[data-reveal]');
+      if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.13,rootMargin:'0px 0px -4% 0px'});reveal.forEach(node=>observer.observe(node));}else reveal.forEach(node=>node.classList.add('is-visible'));
+      document.getElementById('copy-cta').addEventListener('click',async()=>{const phrase='ЕДУ НА ВЫДОХ';const status=document.getElementById('cta-status');try{await navigator.clipboard.writeText(phrase);status.textContent='Фраза скопирована.';}catch{status.textContent='Скопируйте фразу: «ЕДУ НА ВЫДОХ».';}});
     </script>
   </body>
 </html>
