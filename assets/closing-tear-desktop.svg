@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1600" preserveAspectRatio="none">
+  <defs>
+    <filter id="paper-rough" x="-60" y="-40" width="1120" height="1680" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.06" numOctaves="3" seed="23" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <path d="M300 0 C286 105 278 205 251 315 C224 425 207 535 180 650 C153 768 138 880 114 1000 C91 1118 76 1235 53 1350 C33 1450 18 1535 0 1600 L1000 1600 L1000 0 Z" fill="#fff" filter="url(#paper-rough)"/>
+</svg>
