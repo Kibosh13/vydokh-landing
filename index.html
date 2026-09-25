@@ -42,10 +42,6 @@
       .skip-link:focus { translate:0; }
       .section { position:relative; isolation:isolate; min-height:100svh; overflow:hidden; }
       .section + .section { margin-top:-2px; }
-      .scene-wash { position:absolute; z-index:8; top:-34%; left:-12%; width:124%; height:34%; pointer-events:none; opacity:0; transform:translateY(-135%) rotate(-2deg); filter:blur(28px); background:linear-gradient(180deg,transparent,rgba(212,177,116,.12) 46%,rgba(244,229,201,.08) 58%,transparent); }
-      .section.is-active .scene-wash { animation:scene-wash 1.35s var(--ease-out) both; }
-      .guides .scene-wash,.program .scene-wash,.pricing .scene-wash,.closing .scene-wash { background:linear-gradient(180deg,transparent,rgba(170,134,81,.12) 46%,rgba(255,255,255,.24) 58%,transparent); mix-blend-mode:multiply; }
-      @keyframes scene-wash { 0%{opacity:0;transform:translateY(-135%) rotate(-2deg)} 22%{opacity:.72} 100%{opacity:0;transform:translateY(475%) rotate(-2deg)} }
       .container { width:min(1180px,calc(100% - 3rem)); margin-inline:auto; }
       .eyebrow { margin:0 0 1.5rem; font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; }
       .display { margin:0; font-family:var(--serif); font-weight:400; line-height:.98; letter-spacing:-.035em; }
@@ -205,6 +201,12 @@
 
       [data-reveal] { opacity:0; transform:translateY(32px) scale(.985); filter:blur(7px); transition:opacity .78s var(--ease-out),transform .86s var(--ease-out),filter .72s ease; will-change:opacity,transform,filter; }
       [data-reveal].is-visible { opacity:1; transform:none; filter:none; }
+      [data-reveal] .gen-icon { opacity:0; translate:0 12px; scale:.84; rotate:-4deg; filter:blur(5px); transition:opacity .7s var(--ease-out),translate .78s var(--ease-out),scale .78s var(--ease-out),rotate .78s var(--ease-out),filter .65s ease; }
+      [data-reveal].is-visible .gen-icon { opacity:1; translate:0 0; scale:1; rotate:0deg; filter:none; }
+      [data-reveal] :is(.meta-item,.not-item,.included-item,.closing-fact):nth-child(2) .gen-icon { transition-delay:.08s; }
+      [data-reveal] :is(.not-item,.included-item,.closing-fact):nth-child(3) .gen-icon { transition-delay:.16s; }
+      [data-reveal] :is(.included-item,.closing-fact):nth-child(4) .gen-icon { transition-delay:.24s; }
+      [data-reveal] .included-item:nth-child(5) .gen-icon { transition-delay:.32s; }
       .program-item:nth-child(2),.price-card:nth-child(2) { transition-delay:.08s; }
       .program-item:nth-child(3),.price-card:nth-child(3) { transition-delay:.16s; }
       :focus-visible { outline:2px solid #c8a36a; outline-offset:4px; }
@@ -231,22 +233,25 @@
         .cta-card:hover > .gen-icon { scale:1.08; rotate:3deg; }
         .scroll-cue:hover { opacity:1; color:#e1be82; transform:translateY(4px); }
       }
-      @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } [data-reveal] { opacity:1; transform:none; filter:none; transition:none; } .scene-wash { display:none; } }
+      @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } [data-reveal],[data-reveal] .gen-icon { opacity:1; transform:none; translate:0; scale:1; rotate:0deg; filter:none; transition:none; } }
       @media (min-width:1600px) {
-        html { font-size:clamp(16px,.92vw,22px); }
-        .container { width:min(2100px,calc(100% - 10vw)); }
+        html { font-size:clamp(18px,1.18vw,42px); }
+        .container { width:min(3000px,calc(100% - 8vw)); }
         .hero__inner { padding-bottom:4.4rem; }
-        .hero__lead { max-width:760px; }
+        .hero__lead { max-width:48rem; }
         .hero__meta { margin-top:2.65rem; }
-        .concept__panel { width:min(58%,1020px); }
-        .guides__grid { grid-template-columns:minmax(680px,1.35fr) 1fr 1fr; }
-        .guides__title { max-width:680px; }
-        .program { grid-template-columns:minmax(0,1.7fr) minmax(500px,.9fr); }
+        .concept__panel { width:min(60%,68rem); }
+        .guides__grid { grid-template-columns:minmax(44rem,1.35fr) 1fr 1fr; }
+        .guides__title { max-width:44rem; }
+        .program { grid-template-columns:minmax(0,1.7fr) minmax(32rem,.9fr); }
         .program__copy { padding-inline:max(7rem,7vw); }
-        .price-card { min-height:430px; }
+        .program-item { grid-template-columns:5.75rem 1fr; }
+        .program-icon { width:5.25rem; }
+        .price-card { min-height:max(430px,23rem); }
+        .price-card__head { min-height:6rem; }
         .closing { grid-template-columns:60% 40%; }
-        .closing__title { max-width:1100px; }
-        .cta-card { max-width:900px; }
+        .closing__title { max-width:70rem; }
+        .cta-card { max-width:60rem; }
       }
       @media (max-width:1100px) {
         .container { width:min(100% - 2rem,780px); }
@@ -377,22 +382,22 @@
         </div>
       </section>
       <section class="section guides" aria-labelledby="guides-title"><div class="guides__grid">
-        <div class="guides__copy"><p class="eyebrow">Проводники</p><h2 class="display guides__title" id="guides-title" data-reveal>ДВА<br />ВЗГЛЯДА<br /><span>НА СОСТОЯНИЕ</span></h2><div class="bio-list" data-reveal><article class="bio"><h3>ЕЛЕНА</h3><p>Мастер кундалини-йоги,<br />экзистенциальный психотерапевт, наставник.</p><p>Более 10 лет практики</p></article><article class="bio"><h3>АННА</h3><p>Практикующий психотерапевт,<br />гештальт-терапевт и расстановщик.</p><p>Более 15 лет практики</p></article></div></div>
-        <article class="guide-card guide-card--elena" aria-label="Елена"><div class="guide-card__caption"><h3 class="guide-card__name">ЕЛЕНА</h3><p class="guide-card__role">Кундалини-йога · экзистенциальная психотерапия</p></div></article>
-        <article class="guide-card guide-card--anna" aria-label="Анна"><div class="guide-card__caption"><h3 class="guide-card__name">АННА</h3><p class="guide-card__role">Психотерапия · расстановки</p></div></article>
+        <div class="guides__copy"><p class="eyebrow" data-reveal>Проводники</p><h2 class="display guides__title" id="guides-title" data-reveal>ДВА<br />ВЗГЛЯДА<br /><span>НА СОСТОЯНИЕ</span></h2><div class="bio-list" data-reveal><article class="bio"><h3>ЕЛЕНА</h3><p>Мастер кундалини-йоги,<br />экзистенциальный психотерапевт, наставник.</p><p>Более 10 лет практики</p></article><article class="bio"><h3>АННА</h3><p>Практикующий психотерапевт,<br />гештальт-терапевт и расстановщик.</p><p>Более 15 лет практики</p></article></div></div>
+        <article class="guide-card guide-card--elena" aria-label="Елена"><div class="guide-card__caption" data-reveal><h3 class="guide-card__name">ЕЛЕНА</h3><p class="guide-card__role">Кундалини-йога · экзистенциальная психотерапия</p></div></article>
+        <article class="guide-card guide-card--anna" aria-label="Анна"><div class="guide-card__caption" data-reveal><h3 class="guide-card__name">АННА</h3><p class="guide-card__role">Психотерапия · расстановки</p></div></article>
       </div></section>
-      <section class="section location photo-tone" aria-labelledby="location-title"><div class="container location__inner"><p class="eyebrow">Выдох · 30 октября – 1 ноября</p><h2 class="display location__title" id="location-title" data-reveal>Место,<br />где становится<br />тихо</h2><div class="rule"></div><p class="location__place" data-reveal><span class="gen-icon gen-icon--meta gen-icon--meta-pin" aria-hidden="true"></span>Подмосковье</p><p class="location__facts" data-reveal>Лес · вода · воздух · уединение</p><p class="location__note">Точная геолокация — участникам после подтверждения</p></div></section>
+      <section class="section location photo-tone" aria-labelledby="location-title"><div class="container location__inner"><p class="eyebrow" data-reveal>Выдох · 30 октября – 1 ноября</p><h2 class="display location__title" id="location-title" data-reveal>Место,<br />где становится<br />тихо</h2><div class="rule"></div><p class="location__place" data-reveal><span class="gen-icon gen-icon--meta gen-icon--meta-pin" aria-hidden="true"></span>Подмосковье</p><p class="location__facts" data-reveal>Лес · вода · воздух · уединение</p><p class="location__note" data-reveal>Точная геолокация — участникам после подтверждения</p></div></section>
       <section class="section program" aria-labelledby="program-title"><div class="program__copy"><h2 class="display program__title" id="program-title" data-reveal>КАК ПРОХОДЯТ<br />ТРИ ДНЯ</h2><div class="program-list">
         <article class="program-item" data-reveal><div class="program-icon"><span class="gen-icon gen-icon--program gen-icon--program-body" aria-hidden="true"></span></div><div><h3>ТЕЛО</h3><p>Кундалини-йога, телесные практики,<br />работа с энергией.</p></div></article>
         <article class="program-item" data-reveal><div class="program-icon"><span class="gen-icon gen-icon--program gen-icon--program-mind" aria-hidden="true"></span></div><div><h3>ПСИХИКА</h3><p>Психотерапевтические практики, рефлексия,<br />работа с внутренними состояниями.</p></div></article>
-        <article class="program-item" data-reveal><div class="program-icon"><span class="gen-icon gen-icon--program gen-icon--program-state" aria-hidden="true"></span></div><div><h3>СОСТОЯНИЕ</h3><p>Тишина, замедление, восстановление,<br />пространство без привычной нагрузки.</p></div></article></div><p class="program__note">Небольшая группа. Глубокая работа. Поддержка на каждом этапе.</p></div><div class="program__photo" role="img" aria-label="Спокойный интерьер для отдыха"></div></section>
+        <article class="program-item" data-reveal><div class="program-icon"><span class="gen-icon gen-icon--program gen-icon--program-state" aria-hidden="true"></span></div><div><h3>СОСТОЯНИЕ</h3><p>Тишина, замедление, восстановление,<br />пространство без привычной нагрузки.</p></div></article></div><p class="program__note" data-reveal>Небольшая группа. Глубокая работа. Поддержка на каждом этапе.</p></div><div class="program__photo" role="img" aria-label="Спокойный интерьер для отдыха"></div></section>
       <section class="section pricing" aria-labelledby="pricing-title"><div class="container"><h2 class="display pricing__title" id="pricing-title" data-reveal>Выберите время для себя</h2><div class="price-grid">
         <article class="price-card price-card--featured" role="button" tabindex="0" data-contact-interest="63 999 ₽" aria-label="Выбрать вариант за 63 999 рублей и связаться с организаторами" data-reveal><div class="price-card__head">Для тех, кто<br />выбирает сегодня</div><div class="price-card__body"><p class="price">63 999 <small>₽</small></p><div class="sprig"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><p class="price-card__copy">Для тех, кто принимает решение сейчас.</p></div></article>
         <article class="price-card" role="button" tabindex="0" data-contact-interest="65 999 ₽" aria-label="Выбрать вариант за 65 999 рублей и связаться с организаторами" data-reveal><div class="price-card__head">До 10 сентября</div><div class="price-card__body"><p class="price">65 999 <small>₽</small></p><div class="sprig"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><p class="price-card__copy">Оптимальное время для вашего выбора.</p></div></article>
         <article class="price-card" role="button" tabindex="0" data-contact-interest="70 999 ₽" aria-label="Выбрать вариант за 70 999 рублей и связаться с организаторами" data-reveal><div class="price-card__head">Последние места<br />до 16 сентября</div><div class="price-card__body"><p class="price">70 999 <small>₽</small></p><div class="sprig"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><p class="price-card__copy">Для тех, кто готов присоединиться позже.</p></div></article></div>
-        <p class="included-title">В стоимость входит:</p><div class="included" data-reveal><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-house" aria-hidden="true"></span><span>Проживание</span></div><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-bowl" aria-hidden="true"></span><span>Питание</span></div><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-lotus" aria-hidden="true"></span><span>Программа</span></div><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-doc" aria-hidden="true"></span><span>Материалы</span></div><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-user" aria-hidden="true"></span><span>Сопровождение<br />ведущих</span></div></div><p class="pricing__note">Количество мест ограничено для сохранения камерности и глубины работы.</p>
+        <p class="included-title" data-reveal>В стоимость входит:</p><div class="included" data-reveal><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-house" aria-hidden="true"></span><span>Проживание</span></div><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-bowl" aria-hidden="true"></span><span>Питание</span></div><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-lotus" aria-hidden="true"></span><span>Программа</span></div><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-doc" aria-hidden="true"></span><span>Материалы</span></div><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-user" aria-hidden="true"></span><span>Сопровождение<br />ведущих</span></div></div><p class="pricing__note" data-reveal>Количество мест ограничено для сохранения камерности и глубины работы.</p>
       </div></section>
-      <section class="section closing" aria-labelledby="closing-title"><div class="closing__copy"><h2 class="display closing__title" id="closing-title" data-reveal>ТЕБЕ НЕ НУЖЕН ЕЩЁ ОДИН РЫВОК,<br /><span class="gold">ТЕБЕ ПРОСТО ПОРА ВЫДОХНУТЬ</span></h2><div class="rule"></div><p class="closing__lead">Пространство. Тишина. Восстановление.<br /><strong class="gold">30 октября – 1 ноября.</strong> Московская область.</p>
+      <section class="section closing" aria-labelledby="closing-title"><div class="closing__copy"><h2 class="display closing__title" id="closing-title" data-reveal>ТЕБЕ НЕ НУЖЕН ЕЩЁ ОДИН РЫВОК,<br /><span class="gold">ТЕБЕ ПРОСТО ПОРА ВЫДОХНУТЬ</span></h2><div class="rule"></div><p class="closing__lead" data-reveal>Пространство. Тишина. Восстановление.<br /><strong class="gold">30 октября – 1 ноября.</strong> Московская область.</p>
         <div class="closing__facts" data-reveal><div class="closing-fact"><div class="program-icon"><span class="gen-icon gen-icon--meta gen-icon--meta-calendar" aria-hidden="true"></span></div><span>30 октября<br />– 1 ноября</span></div><div class="closing-fact"><div class="program-icon"><span class="gen-icon gen-icon--meta gen-icon--meta-pin" aria-hidden="true"></span></div><span>Московская<br />область</span></div><div class="closing-fact"><div class="program-icon"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><span>Камерный<br />ретрит</span></div><div class="closing-fact"><div class="program-icon"><span class="gen-icon gen-icon--meta gen-icon--meta-people" aria-hidden="true"></span></div><span>Для предпринимателей<br />и созидателей</span></div></div>
         <div class="cta-card" data-reveal><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span><div><p>Если вы приняли решение ехать, напишите «<strong>ЕДУ НА ВЫДОХ</strong>» и получите бесплатную <strong>получасовую сессию</strong> с Еленой или Анной.</p><div class="cta-actions"><button class="cta-button" type="button" id="copy-cta">Скопировать «ЕДУ НА ВЫДОХ»</button><button class="cta-button cta-button--outline" type="button" id="open-contact">Связаться с нами</button></div><p class="cta-status" id="cta-status" role="status" aria-live="polite"></p></div></div>
       </div><div class="closing__photo" role="img" aria-label="Тихое озеро и место для отдыха на закате"></div></section>
@@ -420,9 +425,6 @@
     </div>
     <script>
       const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const sections=[...document.querySelectorAll('.section')];
-      sections.forEach(section=>{const wash=document.createElement('span');wash.className='scene-wash';wash.setAttribute('aria-hidden','true');section.append(wash);});
-      if('IntersectionObserver'in window&&!reduceMotion){const sectionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('is-active',entry.isIntersecting)),{threshold:.2,rootMargin:'-8% 0px -8% 0px'});sections.forEach(section=>sectionObserver.observe(section));}else sections.forEach(section=>section.classList.add('is-active'));
       const reveal=document.querySelectorAll('[data-reveal]');
       if('IntersectionObserver'in window&&!reduceMotion){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.13,rootMargin:'0px 0px -4% 0px'});reveal.forEach(node=>observer.observe(node));}else reveal.forEach(node=>node.classList.add('is-visible'));
       document.getElementById('copy-cta').addEventListener('click',async()=>{const phrase='ЕДУ НА ВЫДОХ';const status=document.getElementById('cta-status');try{await navigator.clipboard.writeText(phrase);status.textContent='Фраза скопирована.';}catch{status.textContent='Скопируйте фразу: «ЕДУ НА ВЫДОХ».';}});
