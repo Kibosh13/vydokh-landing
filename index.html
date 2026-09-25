@@ -113,7 +113,7 @@
       .program-list { display:grid; gap:1.4rem; margin-top:2.8rem; }
       .program-item { display:grid; grid-template-columns:92px 1fr; align-items:center; gap:1.4rem; }
       .program-icon { width:84px; aspect-ratio:1; display:grid; place-items:center; color:#725d3e; border:1px solid #a9916e; border-radius:50%; }
-      .program-icon .gen-icon { width:5.1rem; }
+      .program-icon .gen-icon { width:97%; }
       .program-item .gen-icon { transform:translateY(-5px); }
       .program-item .gen-icon--program-state { transform:none; }
       .program-item h3 { margin:0 0 .35rem; font-family:var(--serif); font-size:1.45rem; font-weight:400; }
@@ -152,12 +152,12 @@
       .closing__facts { display:grid; grid-template-columns:repeat(4,1fr); margin:2.4rem 0; }
       .closing-fact { display:grid; justify-items:center; gap:.75rem; padding:0 1rem; text-align:center; border-left:1px solid var(--line); font-size:.66rem; font-weight:600; line-height:1.45; text-transform:uppercase; }
       .closing-fact:first-child { border-left:0; padding-left:0; }
-      .closing-fact .program-icon { width:70px; }
-      .closing-fact .gen-icon { width:4rem; }
-      .closing-fact .gen-icon--meta-calendar { transform:translate(-5px,-3px); }
-      .closing-fact .gen-icon--meta-pin { transform:translate(.5px,-2px); }
-      .closing-fact .gen-icon--meta-sprig { transform:translate(-5.5px,2.5px); }
-      .closing-fact .gen-icon--meta-people { transform:translate(2px,-2px); }
+      .closing-fact .program-icon { width:clamp(70px,4.5rem,160px); }
+      .closing-fact .gen-icon { width:84%; }
+      .closing-fact .gen-icon--meta-calendar { transform:translate(-6%,-4%); }
+      .closing-fact .gen-icon--meta-pin { transform:translate(.5%,-3%); }
+      .closing-fact .gen-icon--meta-sprig { transform:translate(-7%,3%); }
+      .closing-fact .gen-icon--meta-people { transform:translate(3%,-3%); }
       .cta-card { display:grid; grid-template-columns:auto 1fr; align-items:center; gap:1.5rem; max-width:760px; padding:1.6rem; border:1px solid #b19a78; border-radius:.55rem; }
       .cta-card > .gen-icon { width:6.2rem; }
       .cta-card p { margin:0; line-height:1.62; }
@@ -190,8 +190,15 @@
       .contact-form__title { grid-column:1/-1; margin:0; font-family:var(--serif); font-size:1.45em; font-weight:400; }
       .contact-field { display:grid; gap:.45em; }
       .contact-field label { font-size:.78em; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
-      .contact-field input { width:100%; min-height:3.15em; padding:.8em .95em; color:var(--ink); background:#f8f5ef; border:1px solid #b9aa91; border-radius:.5em; outline:0; }
-      .contact-field input:focus { border-color:#765d3c; box-shadow:0 0 0 3px rgba(141,112,72,.13); }
+      .contact-field__head { min-height:1.8em; display:flex; align-items:center; justify-content:space-between; gap:.6em; }
+      .contact-method { display:flex; flex:0 0 auto; gap:2px; padding:2px; background:#e9e2d6; border-radius:999px; }
+      .contact-method label { position:relative; cursor:pointer; }
+      .contact-method input { position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+      .contact-method span { display:block; padding:.32em .62em; color:#6d665b; border-radius:999px; font-size:.75em; letter-spacing:0; line-height:1.1; text-transform:none; transition:color .2s ease,background .2s ease,box-shadow .2s ease; }
+      .contact-method input:checked + span { color:#fff; background:#8d7048; box-shadow:0 2px 8px rgba(82,63,38,.18); }
+      .contact-method input:focus-visible + span { outline:2px solid #8d7048; outline-offset:2px; }
+      .contact-field > input { width:100%; min-height:3.15em; padding:.8em .95em; color:var(--ink); background:#f8f5ef; border:1px solid #b9aa91; border-radius:.5em; outline:0; }
+      .contact-field > input:focus { border-color:#765d3c; box-shadow:0 0 0 3px rgba(141,112,72,.13); }
       .contact-dialog .cta-button { padding:.78em 1em; font-size:.86em; }
       .contact-submit { justify-self:start; }
       .contact-submit:disabled { cursor:wait; opacity:.68; transform:none; }
@@ -311,7 +318,6 @@
         .program__title { font-size:2.75rem; }
         .program-item { grid-template-columns:74px 1fr; gap:1rem; }
         .program-icon { width:68px; }
-        .program-icon .gen-icon { width:4.15rem; }
         .program__photo { min-height:360px; }
         .pricing { padding-top:4rem; }
         .pricing__title { font-size:3rem; }
@@ -344,7 +350,7 @@
         .contact-form__title,.contact-hint { grid-column:auto; }
         .contact-form__title { font-size:1.25em; }
         .contact-field { gap:.3em; }
-        .contact-field input { min-height:2.8em; }
+        .contact-field > input { min-height:2.8em; }
         .contact-hint { line-height:1.35; }
         .closing__photo { min-height:390px; background-size:cover; background-position:64% center; }
       }
@@ -356,7 +362,7 @@
         .contact-list { gap:.5em; }
         .contact-person { padding:.6em .75em; }
         .contact-form { gap:.5em; margin-top:.7em; padding-top:.7em; }
-        .contact-field input { min-height:2.65em; }
+        .contact-field > input { min-height:2.65em; }
         .contact-hint { line-height:1.25; }
       }
       @media (max-width:380px) {
@@ -366,7 +372,6 @@
         .guides__title,.program__title,.closing__title { font-size:2.45rem; }
         .program-item { grid-template-columns:62px 1fr; gap:.8rem; }
         .program-icon { width:58px; }
-        .program-icon .gen-icon { width:3.55rem; }
         .closing-fact { padding-inline:.45rem; font-size:.59rem; }
         .closing-fact .program-icon { width:62px; }
         .cta-card { padding:1.25rem; }
@@ -423,7 +428,7 @@
       </div></section>
       <section class="section closing" aria-labelledby="closing-title"><div class="closing__copy"><h2 class="display closing__title" id="closing-title" data-reveal>ТЕБЕ НЕ НУЖЕН ЕЩЁ ОДИН РЫВОК,<br /><span class="gold">ТЕБЕ ПРОСТО ПОРА ВЫДОХНУТЬ</span></h2><div class="rule"></div><p class="closing__lead" data-reveal>Пространство. Тишина. Восстановление.<br /><strong class="gold">30 октября – 1 ноября.</strong> Московская область.</p>
         <div class="closing__facts" data-reveal><div class="closing-fact"><div class="program-icon"><span class="gen-icon gen-icon--meta gen-icon--meta-calendar" aria-hidden="true"></span></div><span>30 октября<br />– 1 ноября</span></div><div class="closing-fact"><div class="program-icon"><span class="gen-icon gen-icon--meta gen-icon--meta-pin" aria-hidden="true"></span></div><span>Московская<br />область</span></div><div class="closing-fact"><div class="program-icon"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><span>Камерный<br />ретрит</span></div><div class="closing-fact"><div class="program-icon"><span class="gen-icon gen-icon--meta gen-icon--meta-people" aria-hidden="true"></span></div><span>Для предпринимателей<br />и созидателей</span></div></div>
-        <div class="cta-card" data-reveal><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span><div><p>Если вы приняли решение ехать, напишите «<strong>ЕДУ НА ВЫДОХ</strong>» и получите бесплатную <strong>получасовую сессию</strong> с Еленой или Анной.</p><div class="cta-actions"><button class="cta-button" type="button" id="copy-cta">Скопировать «ЕДУ НА ВЫДОХ»</button><button class="cta-button cta-button--outline" type="button" id="open-contact">Связаться с нами</button></div><p class="cta-status" id="cta-status" role="status" aria-live="polite"></p></div></div>
+        <div class="cta-card" data-reveal><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span><div><p><strong>Первые 10 участников</strong> получат в подарок получасовую сессию с Еленой или Анной.</p><div class="cta-actions"><button class="cta-button cta-button--outline" type="button" id="open-contact">Связаться с нами</button></div></div></div>
       </div><div class="closing__photo" role="img" aria-label="Тихое озеро и место для отдыха на закате"></div></section>
     </main>
     <div class="contact-modal" id="contact-modal" hidden>
@@ -431,7 +436,7 @@
         <button class="contact-close" type="button" id="close-contact" aria-label="Закрыть окно">×</button>
         <p class="contact-kicker" id="contact-kicker">Выдох 2.0 · связь</p>
         <h2 class="contact-title" id="contact-title">Связаться с нами</h2>
-        <p class="contact-lead">Напишите напрямую в Telegram или оставьте имя и свой Telegram</p>
+        <p class="contact-lead">Напишите напрямую в Telegram или оставьте имя и удобный способ связи</p>
         <div class="contact-list">
           <a class="contact-person" href="https://t.me/HelenaSpravtseva" target="_blank" rel="noopener noreferrer"><span><strong>Елена Справцева</strong><span>@HelenaSpravtseva</span></span></a>
           <a class="contact-person" href="https://t.me/AnnaR1202" target="_blank" rel="noopener noreferrer"><span><strong>Анна Ржевская</strong><span>@AnnaR1202</span></span></a>
@@ -439,7 +444,7 @@
         <form class="contact-form" id="contact-form">
           <h3 class="contact-form__title">Попросить связаться с вами</h3>
           <div class="contact-field"><label for="contact-name">Имя</label><input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required /></div>
-          <div class="contact-field"><label for="contact-telegram">Ваш Telegram</label><input id="contact-telegram" name="telegram" type="text" autocomplete="off" placeholder="@username" required /></div>
+          <div class="contact-field"><div class="contact-field__head"><label for="contact-reach" id="contact-reach-label">Ваш Telegram</label><div class="contact-method" role="radiogroup" aria-label="Способ связи"><label><input type="radio" name="contact_method" value="telegram" checked /><span>Telegram</span></label><label><input type="radio" name="contact_method" value="phone" /><span>Телефон</span></label></div></div><input id="contact-reach" name="contact" type="text" inputmode="text" autocomplete="off" placeholder="@username" required /></div>
           <div class="contact-trap" aria-hidden="true"><label for="contact-website">Сайт</label><input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
           <button class="cta-button contact-submit" type="submit" disabled aria-disabled="true">Заявки доступны на основном сайте</button>
           <p class="contact-form-status" id="contact-form-status" role="status" aria-live="polite"></p>
@@ -451,16 +456,19 @@
       const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
       const reveal=document.querySelectorAll('[data-reveal]');
       if('IntersectionObserver'in window&&!reduceMotion){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.13,rootMargin:'0px 0px -4% 0px'});reveal.forEach(node=>observer.observe(node));}else reveal.forEach(node=>node.classList.add('is-visible'));
-      document.getElementById('copy-cta').addEventListener('click',async()=>{const phrase='ЕДУ НА ВЫДОХ';const status=document.getElementById('cta-status');try{await navigator.clipboard.writeText(phrase);status.textContent='Фраза скопирована.';}catch{status.textContent='Скопируйте фразу: «ЕДУ НА ВЫДОХ».';}});
       const contactModal=document.getElementById('contact-modal');
       const contactDialog=contactModal.querySelector('.contact-dialog');
       const openContact=document.getElementById('open-contact');
       const closeContact=document.getElementById('close-contact');
       const contactKicker=document.getElementById('contact-kicker');
+      const contactReach=document.getElementById('contact-reach');
+      const contactReachLabel=document.getElementById('contact-reach-label');
       let contactReturnFocus=null;
+      function setContactMethod(method){const phone=method==='phone';contactReachLabel.textContent=phone?'Номер телефона':'Ваш Telegram';contactReach.placeholder=phone?'+7 999 000-00-00':'@username';contactReach.inputMode=phone?'tel':'text';contactReach.autocomplete=phone?'tel':'off';}
       function showContact(interest=''){contactReturnFocus=document.activeElement;contactKicker.textContent=interest?`Выдох 2.0 · вариант ${interest}`:'Выдох 2.0 · связь';contactModal.hidden=false;document.body.classList.add('modal-open');closeContact.focus();}
       function hideContact(){contactModal.hidden=true;document.body.classList.remove('modal-open');contactReturnFocus?.focus();}
       openContact.addEventListener('click',()=>showContact());
+      document.querySelectorAll('input[name="contact_method"]').forEach(option=>option.addEventListener('change',()=>setContactMethod(option.value)));
       document.querySelectorAll('[data-contact-interest]').forEach(card=>{const choose=()=>showContact(card.dataset.contactInterest);card.addEventListener('click',choose);card.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();choose();}});});
       closeContact.addEventListener('click',hideContact);
       contactModal.addEventListener('click',event=>{if(event.target===contactModal)hideContact();});
