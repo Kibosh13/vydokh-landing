@@ -19,7 +19,7 @@ index = index.replace(
   '<button class="cta-button contact-submit" type="submit" disabled aria-disabled="true">Заявки доступны на основном сайте</button>',
 );
 index = index.replace(
-  'Контакт сохранится в заявках организаторов. Мы напишем вам в Telegram.',
+  'Контакт сохранится в заявках организаторов. Мы свяжемся с вами удобным способом.',
   'В статической демоверсии сохранение заявок отключено. Используйте прямые ссылки Telegram.',
 );
 

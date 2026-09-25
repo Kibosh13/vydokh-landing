@@ -32,12 +32,13 @@ const createResponse = await worker.fetch(
   new Request("https://example.test/api/leads", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ name: "Анна", telegram: "@anna", website: "" }),
+    body: JSON.stringify({ name: "Анна", contact: "+7 999 000-00-00", website: "" }),
   }),
   env,
 );
 assert.equal(createResponse.status, 201);
 assert.equal(rows.length, 1);
+assert.equal(rows[0].telegram, "+7 999 000-00-00");
 
 const denied = await worker.fetch(new Request("https://example.test/api/admin/leads"), env);
 assert.equal(denied.status, 401);

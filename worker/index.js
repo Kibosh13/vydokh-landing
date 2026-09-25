@@ -34,12 +34,12 @@ async function createLead(request, env) {
   }
 
   const name = clean(payload?.name, 100);
-  const telegram = clean(payload?.telegram, 120);
+  const telegram = clean(payload?.contact ?? payload?.telegram, 120);
   const website = clean(payload?.website, 200);
 
   if (website) return json({ ok: true }, 201);
   if (name.length < 2) return json({ error: "Укажите имя." }, 400);
-  if (telegram.length < 2) return json({ error: "Укажите ваш Telegram." }, 400);
+  if (telegram.length < 2) return json({ error: "Укажите Telegram или номер телефона." }, 400);
 
   try {
     const result = await env.DB.prepare(
