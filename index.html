@@ -130,6 +130,8 @@
       .pricing__title { font-size:clamp(3rem,5.8vw,5.9rem); }
       .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.35rem; margin-top:2.8rem; }
       .price-card { min-height:390px; display:flex; flex-direction:column; text-align:center; border:1px solid #aa9778; border-radius:.45rem; background:rgba(248,246,241,.42); overflow:hidden; }
+      .price-card[role="button"] { cursor:pointer; }
+      .price-card[role="button"]:focus-visible { transform:translateY(-7px); border-color:#8d7048; box-shadow:0 20px 46px rgba(72,57,38,.15); }
       .price-card__head { min-height:94px; display:grid; place-items:center; padding:1rem; border-bottom:1px solid #aa9778; font-size:.83rem; font-weight:500; line-height:1.45; letter-spacing:.08em; text-transform:uppercase; }
       .price-card--featured .price-card__head { color:#fff; background:#9d7c48; }
       .price-card__body { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2rem; }
@@ -385,9 +387,9 @@
         <article class="program-item" data-reveal><div class="program-icon"><span class="gen-icon gen-icon--program gen-icon--program-mind" aria-hidden="true"></span></div><div><h3>ПСИХИКА</h3><p>Психотерапевтические практики, рефлексия,<br />работа с внутренними состояниями.</p></div></article>
         <article class="program-item" data-reveal><div class="program-icon"><span class="gen-icon gen-icon--program gen-icon--program-state" aria-hidden="true"></span></div><div><h3>СОСТОЯНИЕ</h3><p>Тишина, замедление, восстановление,<br />пространство без привычной нагрузки.</p></div></article></div><p class="program__note">Небольшая группа. Глубокая работа. Поддержка на каждом этапе.</p></div><div class="program__photo" role="img" aria-label="Спокойный интерьер для отдыха"></div></section>
       <section class="section pricing" aria-labelledby="pricing-title"><div class="container"><h2 class="display pricing__title" id="pricing-title" data-reveal>Выберите время для себя</h2><div class="price-grid">
-        <article class="price-card price-card--featured" data-reveal><div class="price-card__head">Для тех, кто<br />выбирает сегодня</div><div class="price-card__body"><p class="price">63 999 <small>₽</small></p><div class="sprig"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><p class="price-card__copy">Для тех, кто принимает решение сейчас.</p></div></article>
-        <article class="price-card" data-reveal><div class="price-card__head">До 10 сентября</div><div class="price-card__body"><p class="price">65 999 <small>₽</small></p><div class="sprig"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><p class="price-card__copy">Оптимальное время для вашего выбора.</p></div></article>
-        <article class="price-card" data-reveal><div class="price-card__head">Последние места<br />до 16 сентября</div><div class="price-card__body"><p class="price">70 999 <small>₽</small></p><div class="sprig"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><p class="price-card__copy">Для тех, кто готов присоединиться позже.</p></div></article></div>
+        <article class="price-card price-card--featured" role="button" tabindex="0" data-contact-interest="63 999 ₽" aria-label="Выбрать вариант за 63 999 рублей и связаться с организаторами" data-reveal><div class="price-card__head">Для тех, кто<br />выбирает сегодня</div><div class="price-card__body"><p class="price">63 999 <small>₽</small></p><div class="sprig"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><p class="price-card__copy">Для тех, кто принимает решение сейчас.</p></div></article>
+        <article class="price-card" role="button" tabindex="0" data-contact-interest="65 999 ₽" aria-label="Выбрать вариант за 65 999 рублей и связаться с организаторами" data-reveal><div class="price-card__head">До 10 сентября</div><div class="price-card__body"><p class="price">65 999 <small>₽</small></p><div class="sprig"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><p class="price-card__copy">Оптимальное время для вашего выбора.</p></div></article>
+        <article class="price-card" role="button" tabindex="0" data-contact-interest="70 999 ₽" aria-label="Выбрать вариант за 70 999 рублей и связаться с организаторами" data-reveal><div class="price-card__head">Последние места<br />до 16 сентября</div><div class="price-card__body"><p class="price">70 999 <small>₽</small></p><div class="sprig"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><p class="price-card__copy">Для тех, кто готов присоединиться позже.</p></div></article></div>
         <p class="included-title">В стоимость входит:</p><div class="included" data-reveal><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-house" aria-hidden="true"></span><span>Проживание</span></div><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-bowl" aria-hidden="true"></span><span>Питание</span></div><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-lotus" aria-hidden="true"></span><span>Программа</span></div><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-doc" aria-hidden="true"></span><span>Материалы</span></div><div class="included-item"><span class="gen-icon gen-icon--included gen-icon--included-user" aria-hidden="true"></span><span>Сопровождение<br />ведущих</span></div></div><p class="pricing__note">Количество мест ограничено для сохранения камерности и глубины работы.</p>
       </div></section>
       <section class="section closing" aria-labelledby="closing-title"><div class="closing__copy"><h2 class="display closing__title" id="closing-title" data-reveal>ТЕБЕ НЕ НУЖЕН ЕЩЁ ОДИН РЫВОК,<br /><span class="gold">ТЕБЕ ПРОСТО ПОРА ВЫДОХНУТЬ</span></h2><div class="rule"></div><p class="closing__lead">Пространство. Тишина. Восстановление.<br /><strong class="gold">30 октября – 1 ноября.</strong> Московская область.</p>
@@ -398,7 +400,7 @@
     <div class="contact-modal" id="contact-modal" hidden>
       <div class="contact-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-title" tabindex="-1">
         <button class="contact-close" type="button" id="close-contact" aria-label="Закрыть окно">×</button>
-        <p class="contact-kicker">Выдох 2.0 · связь</p>
+        <p class="contact-kicker" id="contact-kicker">Выдох 2.0 · связь</p>
         <h2 class="contact-title" id="contact-title">Связаться с нами</h2>
         <p class="contact-lead">Напишите напрямую в Telegram или оставьте имя и свой Telegram</p>
         <div class="contact-list">
@@ -428,10 +430,12 @@
       const contactDialog=contactModal.querySelector('.contact-dialog');
       const openContact=document.getElementById('open-contact');
       const closeContact=document.getElementById('close-contact');
+      const contactKicker=document.getElementById('contact-kicker');
       let contactReturnFocus=null;
-      function showContact(){contactReturnFocus=document.activeElement;contactModal.hidden=false;document.body.classList.add('modal-open');closeContact.focus();}
+      function showContact(interest=''){contactReturnFocus=document.activeElement;contactKicker.textContent=interest?`Выдох 2.0 · вариант ${interest}`:'Выдох 2.0 · связь';contactModal.hidden=false;document.body.classList.add('modal-open');closeContact.focus();}
       function hideContact(){contactModal.hidden=true;document.body.classList.remove('modal-open');contactReturnFocus?.focus();}
-      openContact.addEventListener('click',showContact);
+      openContact.addEventListener('click',()=>showContact());
+      document.querySelectorAll('[data-contact-interest]').forEach(card=>{const choose=()=>showContact(card.dataset.contactInterest);card.addEventListener('click',choose);card.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();choose();}});});
       closeContact.addEventListener('click',hideContact);
       contactModal.addEventListener('click',event=>{if(event.target===contactModal)hideContact();});
       contactDialog.addEventListener('keydown',event=>{if(event.key!=='Tab')return;const focusable=[...contactDialog.querySelectorAll('a[href],button,input')].filter(node=>!node.disabled);const first=focusable[0];const last=focusable[focusable.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}});
