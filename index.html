@@ -30,7 +30,7 @@
       .gen-icon--concept-case { background-position:102% 8.5%; }
       .gen-icon--program { background-image:url("assets/icons-program-v2.png"); background-size:200% 200%; }
       .gen-icon--program-body { background-position:6.5% 4.2%; }
-      .gen-icon--program-mind { background-position:98.8% 6%; }
+      .gen-icon--program-mind { background-image:url("assets/icon-program-mind-v2.png"); background-size:145%; background-position:center; }
       .gen-icon--program-state { background-position:4.7% 100%; }
       .gen-icon--included { background-image:url("assets/icons-included-v2.png"); background-size:300% 200%; }
       .gen-icon--included-house { background-position:1.9% 16.5%; }
@@ -40,7 +40,17 @@
       .gen-icon--included-user { background-position:50.4% 90.1%; }
       .skip-link { position:fixed; z-index:100; top:1rem; left:1rem; padding:.75rem 1rem; color:#fff; background:#111; border-radius:2rem; translate:0 -180%; }
       .skip-link:focus { translate:0; }
+      .site-nav { position:fixed; z-index:120; top:1rem; left:50%; width:min(80rem,calc(100% - 2rem)); display:flex; align-items:center; justify-content:space-between; gap:1.25rem; padding:.62rem .72rem .62rem 1.1rem; color:#fff; background:rgba(5,24,23,.58); border:1px solid rgba(238,218,184,.25); border-radius:999px; box-shadow:0 14px 38px rgba(2,12,11,.18); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); translate:-50% 0; font-size:.78rem; }
+      .site-nav__links { display:flex; align-items:center; gap:clamp(.25rem,1.2vw,1.35rem); }
+      .site-nav__link,.site-nav__contact,.site-nav__phone { color:inherit; text-decoration:none; }
+      .site-nav__link,.site-nav__contact { position:relative; padding:.48em .72em; background:transparent; border:0; border-radius:999px; cursor:pointer; white-space:nowrap; }
+      .site-nav__link::after,.site-nav__contact::after { content:""; position:absolute; right:.72em; bottom:.25em; left:.72em; height:1px; background:#d2ad70; scale:0 1; transform-origin:center; transition:scale .28s var(--ease-out); }
+      .site-nav__link:hover::after,.site-nav__contact:hover::after,.site-nav__link:focus-visible::after,.site-nav__contact:focus-visible::after { scale:1 1; }
+      .site-nav__phone { display:flex; align-items:center; gap:.55em; flex:0 0 auto; padding:.62em 1em; color:#f7f0e4; background:rgba(170,134,81,.2); border:1px solid rgba(226,194,143,.36); border-radius:999px; font-weight:500; letter-spacing:.035em; white-space:nowrap; transition:background .25s ease,border-color .25s ease,transform .25s var(--ease-out); }
+      .site-nav__phone::before { content:"Позвонить"; color:#d9bd8d; font-size:.82em; font-weight:400; letter-spacing:.08em; text-transform:uppercase; }
+      .site-nav__phone:hover { background:rgba(170,134,81,.38); border-color:rgba(226,194,143,.62); transform:translateY(-1px); }
       .section { position:relative; isolation:isolate; min-height:100svh; overflow:hidden; }
+      .section[id] { scroll-margin-top:6.5rem; }
       .section + .section { margin-top:-2px; }
       .container { width:min(1180px,calc(100% - 3rem)); margin-inline:auto; }
       .eyebrow { margin:0 0 1.5rem; font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; }
@@ -285,6 +295,13 @@
       }
       @media (max-width:700px) {
         body { overflow-x:hidden; }
+        .site-nav { top:.5rem; width:calc(100% - 1rem); display:grid; grid-template-columns:1fr; gap:.35rem; padding:.48rem .58rem .55rem; border-radius:1rem; font-size:.68rem; }
+        .site-nav__links { justify-content:space-between; gap:0; }
+        .site-nav__link,.site-nav__contact { padding:.52em .42em; }
+        .site-nav__link::after,.site-nav__contact::after { right:.42em; left:.42em; }
+        .site-nav__phone { justify-content:center; padding:.48em .75em; border-radius:.65rem; }
+        .site-nav__phone::before { content:"Связаться"; }
+        .section[id] { scroll-margin-top:6rem; }
         .section { min-height:auto; }
         .container { width:calc(100% - 2rem); }
         .eyebrow { margin-bottom:1rem; }
@@ -380,6 +397,10 @@
   </head>
   <body>
     <a class="skip-link" href="#main">К содержанию</a>
+    <nav class="site-nav" aria-label="Основная навигация">
+      <div class="site-nav__links"><a class="site-nav__link" href="#home">Главная</a><a class="site-nav__link" href="#about">О нас</a><a class="site-nav__link" href="#prices">Цены</a><button class="site-nav__contact" type="button" id="nav-contact">Связаться</button></div>
+      <a class="site-nav__phone" href="tel:+79147047470" aria-label="Позвонить по номеру плюс семь девятьсот четырнадцать семьсот четыре семьдесят четыре семьдесят">+7 914 704-74-70</a>
+    </nav>
     <svg class="sr-only" aria-hidden="true"><defs>
       <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></symbol>
       <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
@@ -396,7 +417,7 @@
       <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-5 3-8 8-8s8 3 8 8H4Z"/></symbol>
     </defs></svg>
     <main id="main">
-      <section class="section hero photo-tone" aria-labelledby="hero-title">
+      <section class="section hero photo-tone" id="home" aria-labelledby="hero-title">
         <div class="container hero__inner">
           <h1 class="display hero__title" id="hero-title" data-reveal>ВЫДОХ 2.0</h1>
           <p class="hero__lead" data-reveal>Камерный ретрит для тех,<br />кто привык держать всё под контролем</p>
@@ -410,7 +431,7 @@
           <p class="concept__copy" data-reveal>Это три дня, чтобы выйти из привычного круга:<span class="cycle">контроль → ответственность →<br />результат → снова контроль</span></p><p class="concept__ending" data-reveal>И наконец позволить себе<em>выдохнуть.</em></p>
         </div>
       </section>
-      <section class="section guides" aria-labelledby="guides-title"><div class="guides__grid">
+      <section class="section guides" id="about" aria-labelledby="guides-title"><div class="guides__grid">
         <div class="guides__copy"><p class="eyebrow" data-reveal>Проводники</p><h2 class="display guides__title" id="guides-title" data-reveal>ДВА<br />ВЗГЛЯДА<br /><span>НА СОСТОЯНИЕ</span></h2><div class="bio-list" data-reveal><article class="bio"><h3>ЕЛЕНА</h3><p>Мастер кундалини-йоги,<br />экзистенциальный психотерапевт, наставник.</p><p>Более 10 лет практики</p></article><article class="bio"><h3>АННА</h3><p>Практикующий психотерапевт,<br />гештальт-терапевт и расстановщик.</p><p>Более 15 лет практики</p></article></div></div>
         <article class="guide-card guide-card--elena" aria-label="Елена"><div class="guide-card__caption" data-reveal><h3 class="guide-card__name">ЕЛЕНА</h3><p class="guide-card__role">Кундалини-йога · экзистенциальная психотерапия</p></div></article>
         <article class="guide-card guide-card--anna" aria-label="Анна"><div class="guide-card__caption" data-reveal><h3 class="guide-card__name">АННА</h3><p class="guide-card__role">Психотерапия · расстановки</p></div></article>
@@ -420,7 +441,7 @@
         <article class="program-item" data-reveal><div class="program-icon"><span class="gen-icon gen-icon--program gen-icon--program-body" aria-hidden="true"></span></div><div><h3>ТЕЛО</h3><p>Кундалини-йога, телесные практики,<br />работа с энергией.</p></div></article>
         <article class="program-item" data-reveal><div class="program-icon"><span class="gen-icon gen-icon--program gen-icon--program-mind" aria-hidden="true"></span></div><div><h3>ПСИХИКА</h3><p>Психотерапевтические практики, рефлексия,<br />работа с внутренними состояниями.</p></div></article>
         <article class="program-item" data-reveal><div class="program-icon"><span class="gen-icon gen-icon--program gen-icon--program-state" aria-hidden="true"></span></div><div><h3>СОСТОЯНИЕ</h3><p>Тишина, замедление, восстановление,<br />пространство без привычной нагрузки.</p></div></article></div><p class="program__note" data-reveal>Небольшая группа. Глубокая работа. Поддержка на каждом этапе.</p></div><div class="program__photo" role="img" aria-label="Спокойный интерьер для отдыха"></div></section>
-      <section class="section pricing" aria-labelledby="pricing-title"><div class="container"><h2 class="display pricing__title" id="pricing-title" data-reveal>Выберите время для себя</h2><div class="price-grid">
+      <section class="section pricing" id="prices" aria-labelledby="pricing-title"><div class="container"><h2 class="display pricing__title" id="pricing-title" data-reveal>Выберите время для себя</h2><div class="price-grid">
         <article class="price-card price-card--featured" role="button" tabindex="0" data-contact-interest="63 999 ₽" aria-label="Выбрать вариант за 63 999 рублей и связаться с организаторами" data-reveal><div class="price-card__head">Для тех, кто<br />выбирает сегодня</div><div class="price-card__body"><p class="price">63 999 <small>₽</small></p><div class="sprig"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><p class="price-card__copy">Для тех, кто принимает решение сейчас.</p></div></article>
         <article class="price-card" role="button" tabindex="0" data-contact-interest="65 999 ₽" aria-label="Выбрать вариант за 65 999 рублей и связаться с организаторами" data-reveal><div class="price-card__head">До 10 октября</div><div class="price-card__body"><p class="price">65 999 <small>₽</small></p><div class="sprig"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><p class="price-card__copy">Оптимальное время для вашего выбора.</p></div></article>
         <article class="price-card" role="button" tabindex="0" data-contact-interest="70 999 ₽" aria-label="Выбрать вариант за 70 999 рублей и связаться с организаторами" data-reveal><div class="price-card__head">Последние места<br />до 16 октября</div><div class="price-card__body"><p class="price">70 999 <small>₽</small></p><div class="sprig"><span class="gen-icon gen-icon--meta gen-icon--meta-sprig" aria-hidden="true"></span></div><p class="price-card__copy">Для тех, кто готов присоединиться позже.</p></div></article></div>
@@ -459,6 +480,7 @@
       const contactModal=document.getElementById('contact-modal');
       const contactDialog=contactModal.querySelector('.contact-dialog');
       const openContact=document.getElementById('open-contact');
+      const navContact=document.getElementById('nav-contact');
       const closeContact=document.getElementById('close-contact');
       const contactKicker=document.getElementById('contact-kicker');
       const contactReach=document.getElementById('contact-reach');
@@ -468,6 +490,7 @@
       function showContact(interest=''){contactReturnFocus=document.activeElement;contactKicker.textContent=interest?`Выдох 2.0 · вариант ${interest}`:'Выдох 2.0 · связь';contactModal.hidden=false;document.body.classList.add('modal-open');closeContact.focus();}
       function hideContact(){contactModal.hidden=true;document.body.classList.remove('modal-open');contactReturnFocus?.focus();}
       openContact.addEventListener('click',()=>showContact());
+      navContact.addEventListener('click',()=>showContact());
       document.querySelectorAll('input[name="contact_method"]').forEach(option=>option.addEventListener('change',()=>setContactMethod(option.value)));
       document.querySelectorAll('[data-contact-interest]').forEach(card=>{const choose=()=>showContact(card.dataset.contactInterest);card.addEventListener('click',choose);card.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();choose();}});});
       closeContact.addEventListener('click',hideContact);
